@@ -1030,13 +1030,13 @@ addEventListener('keydown',function(e){if(!lb||!lb.classList.contains('on'))retu
 var CALC=[
  {k:'kitchen',en:['Kitchen demolition','Kitchen taken down and removed incl. cabinets, worktops and installations.'],
   da:['Nedrivning af køkken','Nedtagning og bortskaffelse af køkken inkl. skabe, bordplader og installationer.'],
-  fixed:[{max:7,price:4500,en:'Small (up to 7 m²)',da:'Lille (op til 7 m²)'},{max:1e9,price:7500,en:'Large (from 7 m²)',da:'Stort (fra 7 m²)'}]},
+  fixedOpts:[{price:4500,en:'Small kitchen (up to 7 m²)',da:'Lille køkken (op til 7 m²)'},{price:7500,en:'Large kitchen (from 7 m²)',da:'Stort køkken (fra 7 m²)'}]},
  {k:'wall',en:['Wall demolition','Light or load-bearing walls removed incl. clean-up.'],
   da:['Nedrivning af vægge','Nedrivning af lette eller bærende vægge inkl. oprydning.'],
   opts:[{r:299,en:'Plasterboard wall',da:'Gipsvæg'},{r:449,en:'Brick / concrete wall',da:'Murvæg / Betonvæg'}]},
  {k:'floor',en:['Floor demolition','Floor covering and subfloor removed incl. clean-up.'],
   da:['Nedrivning af gulve','Fjernelse af gulvbelægning og underlag inkl. oprydning.'],
-  opts:[{r:199,en:'Wooden floor',da:'Trægulv'},{r:299,en:'Tiled floor',da:'Flisegulv'}]},
+  opts:[{r:199,en:'Wooden floor',da:'Trægulv'},{r:299,en:'Tiled floor',da:'Flisegulv'},{r:600,en:'Concrete floor',da:'Betongulv'}]},
  {k:'ceiling',en:['Ceiling demolition','Ceiling boards taken down incl. insulation and clean-up.'],
   da:['Nedrivning af lofter','Nedtagning af loftbeklædning inkl. isolering og oprydning.'],
   opts:[{r:399,en:'Plasterboard ceiling',da:'Gipsloft'},{r:399,en:'Timber ceiling',da:'Træloft'}]},
@@ -1064,8 +1064,10 @@ function renderCalc(){
     card.setAttribute('aria-pressed',st.on?'true':'false');
     var fields='';
     if(!c.ask){fields='<div class="cc-fields">';
-      if(c.opts)fields+='<select aria-label="'+c[lang][0]+'">'+c.opts.map(function(o,j){return '<option value="'+j+'"'+(st.opt===j?' selected':'')+'>'+o[lang]+'</option>'}).join('')+'</select>';
-      fields+='<input type="number" min="0" step="1" inputmode="numeric" placeholder="m²" value="'+st.m2+'" aria-label="m²"></div>'}
+      var list=c.opts||c.fixedOpts;
+      if(list)fields+='<select aria-label="'+c[lang][0]+'">'+list.map(function(o,j){return '<option value="'+j+'"'+(st.opt===j?' selected':'')+'>'+o[lang]+'</option>'}).join('')+'</select>';
+      if(!c.fixedOpts)fields+='<input type="number" min="0" step="1" inputmode="numeric" placeholder="m²" value="'+st.m2+'" aria-label="m²">';
+      fields+='</div>'}
     card.innerHTML='<span class="tick" aria-hidden="true">'+(st.on?'✓':'')+'</span><h3>'+c[lang][0]+'</h3><p>'+c[lang][1]+'</p>'+fields;
     card.addEventListener('click',function(e){
       if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
@@ -1081,8 +1083,7 @@ function calcRows(){
   var rows=[],area=0,total=0;
   CALC.forEach(function(c,i){var st=calcState[ccKey(c,i)];if(!st||!st.on||c.ask)return;
     var m2=Math.max(0,parseFloat(String(st.m2).replace(',','.'))||0);area+=m2;
-    if(c.fixed){var t=c.fixed[0];for(var k=0;k<c.fixed.length;k++){if(m2>c.fixed[k].max)t=c.fixed[k+1]||c.fixed[k]}
-      if(!m2)t=c.fixed[0];
+    if(c.fixedOpts){var t=c.fixedOpts[st.opt||0];
       rows.push({n:c[lang][0]+' ('+t[lang]+')',d:nf(t.price)+' kr',v:t.price});total+=t.price;return}
     var rate=c.opts?c.opts[st.opt||0].r:c.rate;
     var name=c[lang][0]+(c.opts?' ('+c.opts[st.opt||0][lang]+')':'');
