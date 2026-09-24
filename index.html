@@ -326,10 +326,13 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
   .svc{min-height:190px;padding:20px 18px}
   .svc h3{font-size:17px}
   .svc p{font-size:13.5px}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
   .stat,.stat:nth-child(4){padding:22px 14px 20px;border-left:1px solid var(--line)}
   .stat:nth-child(odd){border-left:0;padding-left:0}
   .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .stat:last-child{grid-column:1/-1;border-left:0;padding-left:0}
+  .stat b{font-size:clamp(26px,7.5vw,34px)}
+  .stat span{max-width:none}
   .steps{grid-template-columns:1fr;gap:34px;padding-left:78px}
   .steps-line{left:27px;right:auto;top:0;bottom:0;width:2px;height:auto}
   .steps-line i{transform-origin:top;transform:scaleY(0);width:100%;height:100%}
@@ -595,6 +598,22 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
     </div>
   </section>
 
+  <section class="block" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="kicker mono" data-i18n="how.kicker">How it works</span><h2 class="display" id="how-h" data-i18n="how.h">Four steps to a clear site</h2></div>
+        <p data-i18n="how.p">No long forms. Send photos, get a price, and we take it from there.</p>
+      </div>
+      <div class="steps" id="steps">
+        <div class="steps-line"><i id="stepsFill"></i></div>
+        <div class="step"><div class="n">01</div><h3 data-i18n="how.1t">Tell us what needs to go</h3><p data-i18n="how.1p">Send a few photos and a short description by SMS, or give us a call.</p></div>
+        <div class="step"><div class="n">02</div><h3 data-i18n="how.2t">Get your quote</h3><p data-i18n="how.2p">A clear price based on your photos or a site visit.</p></div>
+        <div class="step"><div class="n">03</div><h3 data-i18n="how.3t">We demolish</h3><p data-i18n="how.3p">Our team does the work safely, efficiently and on schedule.</p></div>
+        <div class="step"><div class="n">04</div><h3 data-i18n="how.4t">We clear the site</h3><p data-i18n="how.4p">Waste is sorted and removed. You get a clean site, ready for what comes next.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="services" aria-labelledby="services-h">
     <div class="wrap">
       <div class="sec-head">
@@ -624,22 +643,6 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
           <div class="calc-note"><span aria-hidden="true">i</span><span data-i18n="calc.note">This is a non-binding estimate. The final price depends on access, materials and the size of the job.</span></div>
           <button type="button" class="btn btn-accent" id="calcSend"><span data-i18n="calc.send">Send this as a request</span><span class="arr" aria-hidden="true">→</span></button>
         </aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="how" aria-labelledby="how-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div><span class="kicker mono" data-i18n="how.kicker">How it works</span><h2 class="display" id="how-h" data-i18n="how.h">Four steps to a clear site</h2></div>
-        <p data-i18n="how.p">No long forms. Send photos, get a price, and we take it from there.</p>
-      </div>
-      <div class="steps" id="steps">
-        <div class="steps-line"><i id="stepsFill"></i></div>
-        <div class="step"><div class="n">01</div><h3 data-i18n="how.1t">Tell us what needs to go</h3><p data-i18n="how.1p">Send a few photos and a short description by SMS, or give us a call.</p></div>
-        <div class="step"><div class="n">02</div><h3 data-i18n="how.2t">Get your quote</h3><p data-i18n="how.2p">A clear price based on your photos or a site visit.</p></div>
-        <div class="step"><div class="n">03</div><h3 data-i18n="how.3t">We demolish</h3><p data-i18n="how.3p">Our team does the work safely, efficiently and on schedule.</p></div>
-        <div class="step"><div class="n">04</div><h3 data-i18n="how.4t">We clear the site</h3><p data-i18n="how.4p">Waste is sorted and removed. You get a clean site, ready for what comes next.</p></div>
       </div>
     </div>
   </section>
@@ -886,7 +889,8 @@ function countUp(){if(statsDone||reduce)return;statsDone=true;$$('.stat b[data-c
 if('IntersectionObserver' in window){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');if(e.target.classList.contains('stats'))countUp();io.unobserve(e.target)}})},{threshold:.18});
   $$('.rv').forEach(function(el){io.observe(el)});
-}else $$('.rv').forEach(function(el){el.classList.remove('pre')});
+}else $('.rv').forEach(function(el){el.classList.remove('pre')});
+setTimeout(function(){$('.rv.pre').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*1.2){el.classList.remove('pre');if(el.classList.contains('stats'))countUp()}})},1600);
 
 /* ---------- how-it-works line ---------- */
 var steps=$('#steps'),stepsFill=$('#stepsFill'),stepEls=$$('.step');
