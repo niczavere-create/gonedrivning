@@ -1113,7 +1113,7 @@ var CALCIDX={kitchen:0,wall:1,floor:2,ceiling:3,garage:4,shed:5,summerhouse:6,ho
 document.addEventListener('click',function(e){var b=e.target.closest('[data-calc]');if(!b)return;e.preventDefault();
   var key=b.getAttribute('data-calc'),i=CALCIDX[key];
   if(i!=null){var c=CALC[i],id=ccKey(c,i);var st=calcState[id]||(calcState[id]={on:false,opt:0,m2:''});st.on=true;renderCalc();sumCalc()}
-  var el=$('#calc');if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  var el=$('#calc');if(el){var y=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop)-84;window.scrollTo({top:y,behavior:reduce?'auto':'smooth'})}
   setTimeout(function(){var f=$('#calcCats .cc.on input')||$('#calcCats .cc');if(f&&f.focus)f.focus()},reduce?60:800)});
 
 $$('[data-lang]').forEach(function(b){b.addEventListener('click',function(){setTimeout(function(){renderGal();renderCalc();sumCalc()},0)})});
