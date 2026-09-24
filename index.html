@@ -34,8 +34,8 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%;overflow-x:clip;overscroll-behavior-x:none}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip;overscroll-behavior-x:none;width:100%}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 button{font:inherit;color:inherit}
@@ -84,7 +84,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* ---------- experience ---------- */
 .exp{position:relative;height:1300vh}
-.exp-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(120% 90% at 42% 55%,#1d2024 0%,#121416 45%,var(--bg) 80%)}
+.exp-sticky{position:sticky;top:0;touch-action:pan-y;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(120% 90% at 42% 55%,#1d2024 0%,#121416 45%,var(--bg) 80%)}
 #scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
 .grain{position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .scrim{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .9s var(--ease)}
@@ -1010,8 +1010,9 @@ function tick(){
   // on wide screens the stage panel covers the right third, so frame the subject left of it
   var c=camAt(t),wide=view.w>900,ax=.5,ay=.5;if(mode==='stage'){if(wide)ax=.36;else ay=.34}
   view.ax+=(ax-view.ax)*.08;view.ay+=(ay-view.ay)*.08;
-  var z=reduce?Math.min(c.z,1.05):c.z,S0=Math.max(view.w/IW,view.h/IH),Sc=S0*z;
-  var X0=view.ax*view.w-c.cx*IW*Sc,Y0=view.ay*view.h-c.cy*IH*Sc;
+  var z=reduce?Math.min(c.z,1.05):(wide?c.z:Math.min(c.z,1.45));var S0=Math.max(view.w/IW,view.h/IH),Sc=S0*z;
+  // narrow screens: keep the frame centred horizontally so the page does not swing sideways
+  var X0=wide?(view.ax*view.w-c.cx*IW*Sc):((view.w-IW*Sc)/2),Y0=view.ay*view.h-c.cy*IH*Sc;
   X0=Math.min(0,Math.max(view.w-IW*Sc,X0));Y0=Math.min(0,Math.max(view.h-IH*Sc,Y0));
   cam.style.transform='translate3d('+X0.toFixed(1)+'px,'+Y0.toFixed(1)+'px,0) scale('+Sc.toFixed(5)+')';
   var base=Math.floor(c.f+1e-6),mix=c.f-base;
