@@ -197,8 +197,8 @@ section.block{padding-block:clamp(48px,6vw,92px);border-top:1px solid var(--line
 .svc:hover .ic{color:var(--accent);transform:translateY(-3px)}
 .svc:hover .ic *{animation:draw .9s var(--ease)}
 @keyframes draw{from{stroke-dashoffset:120}to{stroke-dashoffset:0}}
-.svc h3{margin:auto 0 0;font-family:var(--f-display);font-stretch:112%;font-weight:750;font-size:20px;line-height:1.1;text-transform:uppercase;letter-spacing:.005em}
-.svc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.45}
+.svc h3{margin:auto 0 0;font-family:var(--f-display);font-stretch:112%;font-weight:750;font-size:20px;line-height:1.1;text-transform:uppercase;letter-spacing:.005em;overflow-wrap:anywhere;word-break:break-word;-webkit-hyphens:auto;hyphens:auto}
+.svc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.45;overflow-wrap:anywhere}
 .svc .go{position:absolute;right:20px;top:24px;color:var(--dim);font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;transition:color .3s,transform .4s var(--ease)}
 .svc:hover .go{color:var(--accent);transform:translateX(3px)}
 .svc .hazard{position:absolute;left:24px;top:auto;bottom:auto}
@@ -316,7 +316,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
   .sec-head p{justify-self:start}
   .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .svc{min-height:190px;padding:20px 18px}
-  .svc h3{font-size:17px}
+  .svc h3{font-size:clamp(14px,4.15vw,17px)}
   .svc p{font-size:13.5px}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
   .stat,.stat:nth-child(4){padding:22px 14px 20px;border-left:1px solid var(--line)}
@@ -363,7 +363,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:26px}
 .gal-i{position:relative;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--bg-2);cursor:zoom-in;aspect-ratio:3/4}
 .gal-i.wide{grid-column:span 2;aspect-ratio:4/3}
-@media(max-width:560px){.gal{grid-template-columns:repeat(2,1fr)}.gal-i.wide{grid-column:span 2}}
+@media (max-width:560px){.gal{grid-template-columns:repeat(2,1fr)}.gal-i.wide{grid-column:span 2}}
 .gal-i img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s var(--ease);filter:saturate(.92)}
 .gal-i:hover img,.gal-i:focus-visible img{transform:scale(1.045);filter:saturate(1)}
 .gal-i figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 10px;font-size:13.5px;line-height:1.35;
@@ -381,14 +381,15 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 /* ==========================================================================
    Price calculator
    ========================================================================== */
-.calc{display:grid;grid-template-columns:1.25fr .85fr;gap:22px;margin-top:26px;align-items:start}
-@media(max-width:900px){.calc{grid-template-columns:1fr}}
-.calc-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.calc{display:grid;grid-template-columns:1fr;gap:22px;margin-top:26px;align-items:start}
+.calc>*{min-width:0}
+@media (min-width:901px){.calc{grid-template-columns:1.25fr .85fr}}
+.calc-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:12px}
 .cc{position:relative;text-align:left;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:14px 40px 14px 14px;display:block;width:100%;cursor:pointer;transition:border-color .2s,background .2s}
 .cc:hover{border-color:var(--line-2)}
 .cc.on{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,194,26,.07),rgba(255,194,26,0))}
-.cc h3{margin:0 0 4px;font-size:16px;font-weight:700}
-.cc p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.4}
+.cc h3{margin:0 0 4px;font-size:16px;font-weight:700;overflow-wrap:anywhere}
+.cc p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.4;overflow-wrap:anywhere}
 .cc .tick{position:absolute;top:14px;right:14px;width:20px;height:20px;border:1px solid var(--line-2);border-radius:5px;display:grid;place-items:center;color:var(--accent-ink);font-size:13px;background:transparent}
 .cc.on .tick{background:var(--accent);border-color:var(--accent)}
 .cc-fields{display:none;gap:8px;margin-top:12px}
