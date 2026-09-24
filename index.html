@@ -189,9 +189,9 @@ section.block{padding-block:clamp(48px,6vw,92px);border-top:1px solid var(--line
 .kicker{color:var(--accent);margin-bottom:18px;display:block}
 
 .stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{padding:30px 22px 28px;border-left:1px solid var(--line)}
+.stat{padding:26px 18px 24px;border-left:1px solid var(--line);min-width:0}
 .stat:first-child{border-left:0;padding-left:0}
-.stat b{display:block;font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(30px,3.4vw,50px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat b{display:block;font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:clamp(24px,2.5vw,40px);line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em;overflow-wrap:anywhere}
 .stat b small{font-size:.5em;color:var(--accent);margin-left:2px}
 .stat span{display:block;color:var(--muted);font-size:14px;margin-top:10px;max-width:22ch}
 .stats-note{color:var(--dim);margin-top:14px;font-size:11px}
@@ -221,9 +221,9 @@ section.block{padding-block:clamp(48px,6vw,92px);border-top:1px solid var(--line
 .step p{margin:0;color:var(--muted);font-size:15.5px;max-width:30ch}
 
 .why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
-.why div{padding:34px 26px 10px 0}
+.why div{padding:34px 22px 10px 0;min-width:0}
 .why div+div{padding-left:26px;border-left:1px solid var(--line)}
-.why h3{font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(24px,2.3vw,32px);text-transform:uppercase;margin:0 0 12px;letter-spacing:-.01em}
+.why h3{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:clamp(20px,1.8vw,27px);text-transform:uppercase;margin:0 0 12px;letter-spacing:-.01em;overflow-wrap:anywhere;hyphens:auto}
 .why h3::after{content:".";color:var(--accent)}
 .why p{color:var(--muted);margin:0;font-size:15.5px;max-width:28ch}
 
@@ -411,6 +411,20 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 .calc-note{display:flex;gap:9px;margin-top:16px;padding:11px 12px;border:1px solid var(--line);border-radius:8px;color:var(--muted);font-size:13px;line-height:1.45;background:var(--bg-3)}
 .calc-sum .btn{width:100%;justify-content:center;margin-top:16px}
 
+
+.q-files{display:grid;gap:8px;margin-top:2px}
+.q-files-lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+#q-photos{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.q-drop{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border:1px dashed var(--line-2);border-radius:var(--r);
+  color:var(--muted);cursor:pointer;background:var(--bg-3);transition:border-color .2s,color .2s}
+.q-drop:hover,#q-photos:focus-visible+.q-drop{border-color:var(--accent);color:var(--text)}
+.q-drop-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:800;line-height:1}
+.q-thumbs{display:flex;flex-wrap:wrap;gap:8px}
+.q-thumb{position:relative;width:64px;height:64px;border-radius:8px;overflow:hidden;border:1px solid var(--line-2)}
+.q-thumb img{width:100%;height:100%;object-fit:cover}
+.q-thumb button{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;font-size:12px;line-height:1;cursor:pointer;padding:0}
+.q-sent{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:200;background:var(--accent);color:var(--accent-ink);
+  font-weight:700;padding:14px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
 </style>
 </head>
 <body>
@@ -712,17 +726,28 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
       <div><span class="kicker mono" data-i18n="q.kicker">Free quote</span><h2 class="display" id="q-title" data-i18n="q.h">What needs to go?</h2></div>
       <button type="button" class="q-close" id="qClose" aria-label="Close">×</button>
     </div>
-    <form id="qForm">
+    <form id="qForm" action="https://formsubmit.co/niczavere@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="Ny foresporgsel fra gonedrivning.dk">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://niczavere-create.github.io/gonedrivning/?sendt=1">
       <label for="q-service"><span data-i18n="q.service">Job</span>
-        <select id="q-service" name="service"></select>
+        <select id="q-service" name="Opgave"></select>
       </label>
-      <label for="q-name"><span data-i18n="q.name">Name</span><input id="q-name" name="name" autocomplete="name" required></label>
-      <label for="q-phone"><span data-i18n="q.phone">Phone</span><input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
-      <label for="q-msg"><span data-i18n="q.msg">Short description (address, size, anything we should know)</span><textarea id="q-msg" name="message"></textarea></label>
-      <p class="hint" data-i18n="q.hint">Your request opens as a text message to 22 12 32 77 — attach photos there before sending.</p>
+      <label for="q-name"><span data-i18n="q.name">Name</span><input id="q-name" name="Navn" autocomplete="name" required></label>
+      <label for="q-phone"><span data-i18n="q.phone">Phone</span><input id="q-phone" name="Telefon" type="tel" autocomplete="tel" inputmode="tel" required></label>
+      <label for="q-mail"><span data-i18n="q.mail">E-mail (optional)</span><input id="q-mail" name="E-mail" type="email" autocomplete="email"></label>
+      <label for="q-msg"><span data-i18n="q.msg">Short description (address, size, anything we should know)</span><textarea id="q-msg" name="Besked"></textarea></label>
+      <div class="q-files">
+        <span class="q-files-lbl" data-i18n="q.photos">Photos of the job (optional)</span>
+        <label class="q-drop" for="q-photos"><span class="q-drop-ic" aria-hidden="true">+</span><span data-i18n="q.photosCta">Choose photos</span></label>
+        <input id="q-photos" name="attachment" type="file" accept="image/*" multiple>
+        <div class="q-thumbs" id="qThumbs"></div>
+        <p class="hint" id="qFilesHint" data-i18n="q.photosHint">Up to 5 photos, max 5 MB in total.</p>
+      </div>
+      <p class="hint" data-i18n="q.hint">We reply within 24 hours. Your details are never shared with third parties.</p>
       <div class="q-actions">
-        <button type="submit" class="btn btn-accent"><span data-i18n="q.send">Send by SMS</span><span class="arr" aria-hidden="true">→</span></button>
-        <a class="btn btn-ghost" href="tel:+4522123277"><span data-i18n="cta.call">Call</span>&nbsp;22 12 32 77</a>
+        <button type="submit" class="btn btn-accent"><span data-i18n="q.send">Send request</span><span class="arr" aria-hidden="true">→</span></button>
       </div>
     </form>
   </div>
@@ -780,7 +805,7 @@ addEventListener('keydown',function(e){if(e.key==='Escape'&&!mnav.hidden)setMenu
    Add 'uk' (Ukrainian) by adding a third dictionary with the same keys.
    ========================================================================== */
 var DICT={en:{},da:{
-  'nav.gallery':'Projekter','nav.calc':'Priser','cta.price':'Se prisen','gal.kicker':'Vores projekter','gal.h':'Opgaver vi har afsluttet','gal.p':'Et udvalg af vores gennemførte nedrivningsprojekter for private i København og på hele Sjælland.','calc.kicker':'Prisberegner','calc.h':'Få et prisoverslag med det samme','calc.p':'Vælg dine opgaver, indtast antal m² og se overslaget med det samme - det er de samme priser, vi giver tilbud efter.','calc.area':'Samlet areal','calc.est':'Estimeret pris','calc.exvat':'ekskl. moms','calc.incvat':'inkl. 25% moms','calc.empty':'Vælg en eller flere opgaver for at se en pris.','calc.note':'Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.','calc.send':'Send det som en forespørgsel',
+  'nav.gallery':'Projekter','nav.calc':'Priser','cta.price':'Se prisen','q.mail':'E-mail (valgfrit)','q.photos':'Billeder af opgaven (valgfrit)','q.photosCta':'Vælg billeder','q.photosHint':'Op til 5 billeder, maks. 5 MB i alt.','q.hint':'Vi svarer inden for 24 timer. Dine oplysninger deles aldrig med tredjepart.','q.send':'Send forespørgsel','q.sent':'Tak! Vi har modtaget din forespørgsel.','gal.kicker':'Vores projekter','gal.h':'Opgaver vi har afsluttet','gal.p':'Et udvalg af vores gennemførte nedrivningsprojekter for private i København og på hele Sjælland.','calc.kicker':'Prisberegner','calc.h':'Få et prisoverslag med det samme','calc.p':'Vælg dine opgaver, indtast antal m² og se overslaget med det samme - det er de samme priser, vi giver tilbud efter.','calc.area':'Samlet areal','calc.est':'Estimeret pris','calc.exvat':'ekskl. moms','calc.incvat':'inkl. 25% moms','calc.empty':'Vælg en eller flere opgaver for at se en pris.','calc.note':'Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.','calc.send':'Send det som en forespørgsel',
   'a11y.skip':'Gå til indhold','nav.services':'Ydelser','nav.how':'Sådan foregår det','nav.about':'Om os','nav.contact':'Kontakt',
   'cta.quote':'Få et tilbud','cta.free':'Få et gratis tilbud','cta.call':'Ring','cta.contact':'Kontakt os',
   'hero.eyebrow':'Nedrivning · København & Sjælland','hero.h1a':'Vi river ned.','hero.h1b':'Du bygger op.',
@@ -808,7 +833,7 @@ var DICT={en:{},da:{
   'area.kicker':'Her arbejder vi','area.h':'København & hele Sjælland','area.more':'+ resten af Sjælland','area.p':'Vi tager nedrivningsopgaver for husejere, udlejere og håndværkere i København, Frederiksberg, Roskilde, Helsingør og resten af Sjælland – fra et enkelt køkken til et helt hus med garage og skur.',
   'cta2.h':'Har du noget, der skal rives ned?','cta2.p':'Send os billeder, og fortæl hvad der skal fjernes.','cta2.area':'København · Sjælland',
   'foot.p':'Professionel nedrivning i København og på Sjælland.',
-  'q.kicker':'Gratis tilbud','q.h':'Hvad skal væk?','q.service':'Opgave','q.name':'Navn','q.phone':'Telefon','q.msg':'Kort beskrivelse (adresse, størrelse, andet vi skal vide)','q.hint':'Din forespørgsel åbner som en sms til 22 12 32 77 – vedhæft billeder, før du sender.','q.send':'Send som sms'
+  'q.kicker':'Gratis tilbud','q.h':'Hvad skal væk?','q.service':'Opgave','q.name':'Navn','q.phone':'Telefon','q.msg':'Kort beskrivelse (adresse, størrelse, andet vi skal vide)',
 }};
 var SERVICES=[
   {k:'kitchen',en:['Kitchen demolition','Cabinets, worktops, tiles and appliances out.'],da:['Køkkennedrivning','Skabe, bordplader, fliser og hvidevarer ud.'],ic:'<rect x="3" y="10" width="18" height="10" rx="1"/><path d="M3 14h18M9 10v10M5 6h5M14 6h5"/>'},
@@ -828,6 +853,7 @@ var EXTRA={en:{hz:'Hazardous material',other:'Something else',chimney:'Chimney /
 $$('[data-i18n]').forEach(function(el){DICT.en[el.getAttribute('data-i18n')]=el.textContent});
 $$('[data-i18n-html]').forEach(function(el){DICT.en[el.getAttribute('data-i18n-html')]=el.innerHTML});
 var lang='en';
+DICT.en['q.sent']='Thanks! We have received your request.';DICT.en['q.photosHint']='Up to 5 photos, max 5 MB in total.';
 
 function renderServices(){
   var grid=$('#svcGrid');grid.innerHTML='';
@@ -881,12 +907,34 @@ function openQuote(service){
 document.addEventListener('click',function(e){var b=e.target.closest('[data-quote]');if(!b)return;e.preventDefault();setMenu(false);openQuote(b.getAttribute('data-quote'))});
 $('#qClose').addEventListener('click',function(){dlg.close()});
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
-form.addEventListener('submit',function(e){e.preventDefault();
-  var sel=$('#q-service');var job=sel.options[sel.selectedIndex].textContent;
-  var body=(lang==='da'?'Tilbud – ':'Quote request – ')+job+'\n'+$('#q-name').value+', '+$('#q-phone').value+(($('#q-msg').value||'').trim()?'\n'+$('#q-msg').value.trim():'');
-  var href='sms:+4522123277?&body='+encodeURIComponent(body);
-  try{window.top.location.href=href}catch(err){window.location.href=href}
+/* photos: previews, remove, size guard */
+var fileInput=$('#q-photos'),thumbs=$('#qThumbs'),filesHint=$('#qFilesHint'),MAXN=5,MAXB=5*1024*1024;
+function setFiles(list){var dt=new DataTransfer();list.forEach(function(f){dt.items.add(f)});fileInput.files=dt.files;drawThumbs()}
+function drawThumbs(){var fs=Array.prototype.slice.call(fileInput.files);thumbs.innerHTML='';
+  fs.forEach(function(f,i){var d=document.createElement('div');d.className='q-thumb';
+    var im=document.createElement('img');im.alt=f.name;im.src=URL.createObjectURL(f);
+    var b=document.createElement('button');b.type='button';b.textContent='×';b.setAttribute('aria-label','Remove');
+    b.addEventListener('click',function(){var l=Array.prototype.slice.call(fileInput.files);l.splice(i,1);setFiles(l)});
+    d.appendChild(im);d.appendChild(b);thumbs.appendChild(d)});
+  var tot=fs.reduce(function(a,f){return a+f.size},0);
+  filesHint.textContent=fs.length?(fs.length+(lang==='da'?' billede(r) · ':' photo(s) · ')+(tot/1048576).toFixed(1)+' MB'):(DICT[lang]&&DICT[lang]['q.photosHint'])||'Up to 5 photos, max 5 MB in total.';
+  filesHint.style.color=(fs.length>MAXN||tot>MAXB)?'#ff8a7a':'';
+}
+fileInput.addEventListener('change',function(){
+  var fs=Array.prototype.slice.call(fileInput.files).filter(function(f){return f.type.indexOf('image/')===0});
+  if(fs.length>MAXN)fs=fs.slice(0,MAXN);
+  var tot=0;fs=fs.filter(function(f){tot+=f.size;return tot<=MAXB});
+  setFiles(fs)});
+form.addEventListener('submit',function(){
+  var btn=form.querySelector('button[type=submit]');if(btn){btn.disabled=true;btn.style.opacity=.6}
 });
+/* thank-you toast after the form posts and comes back */
+if(location.search.indexOf('sendt=1')>-1){
+  var tst=document.createElement('div');tst.className='q-sent';
+  tst.textContent=(DICT[lang]&&DICT[lang]['q.sent'])||'Thanks! We have received your request.';
+  document.body.appendChild(tst);setTimeout(function(){tst.remove()},6000);
+  try{history.replaceState({},'',location.pathname+location.hash)}catch(e){}
+}
 
 /* ==========================================================================
    Stage UI driven by the (smoothed) timeline
