@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gonedrivning.dk/sitemap.xml
