@@ -1045,6 +1045,7 @@ function tick(){
   if(k===0&&t>.04)sIdx=1;
   if(sIdx!==curStage){arts.forEach(function(a,i){var on=i+1===sIdx;a.classList.toggle('on',on);a.setAttribute('aria-hidden',!on);$$('a,button',a).forEach(function(el){el.tabIndex=on?0:-1})});
     railItems.forEach(function(li,i){li.classList.toggle('on',i+1===sIdx);li.classList.toggle('done',i+1<sIdx||k===LAST)});curStage=sIdx}
+  arts.forEach(function(a2,i2){if(i2!==sIdx-1&&a2.style.opacity!==''){a2.style.opacity='';a2.style.transform=''}});
   if(sIdx>0&&!reduce){var ca=arts[sIdx-1],dir=(sIdx-1)%2?-1:1,uu=sIdx===k?u:(k<sIdx?0:1);
     var ein=sm(clamp01(uu/0.22)),eout=sm(clamp01((uu-0.82)/0.18)),e=ein*(1-eout),W=view.w,H=view.h;
     ca.style.transform='translate3d('+(dir*(1-e)*Math.min(W*0.6,640)).toFixed(1)+'px,'+((0.5-uu)*H*0.28).toFixed(1)+'px,0) rotate('+(dir*(1-e)*7).toFixed(2)+'deg)';
