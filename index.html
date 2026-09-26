@@ -83,7 +83,7 @@ h1,h2,h3{text-wrap:balance}
 .mnav .mnav-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
 
 /* ---------- experience ---------- */
-.exp{position:relative;height:1300vh}
+.exp{position:relative;height:1450vh}
 .exp-sticky{position:sticky;top:0;touch-action:pan-y;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(120% 90% at 42% 55%,#1d2024 0%,#121416 45%,var(--bg) 80%)}
 #scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
 .grain{position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -149,6 +149,17 @@ h1,h2,h3{text-wrap:balance}
 .st .waste{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line-2);border-radius:6px;color:var(--muted);font-size:11px}
 .st .waste::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--brick)}
 .st-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.st .big,.st .st-top,.st .tag,.st p.desc,.st .st-bar{display:none}
+.st{background:rgba(16,18,20,.94);border:1px solid var(--line-2);border-radius:16px;padding:22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);transition:opacity .25s,visibility 0s .25s!important;will-change:transform,opacity}
+.st.on{transition:opacity .25s,visibility 0s!important}
+.st h2{font-size:clamp(26px,2.3vw,34px)!important;margin:0 0 16px}
+.st-actions{flex-direction:column;align-items:stretch}
+.st-actions .btn{width:100%}
+@media (min-width:861px){
+  .panel{width:330px;min-height:0}
+  .exp-sticky[data-side="l"] .panel{right:auto;left:clamp(150px,13vw,230px)}
+  .exp-sticky[data-side="l"] .scrim-stage{background:linear-gradient(90deg,rgba(8,9,10,.9) 0%,rgba(8,9,10,.66) 30%,rgba(8,9,10,0) 56%)}
+}
 .st-bar{margin-top:30px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
 .st-bar i{display:block;height:100%;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(0)}
 .st .big{position:absolute;right:-6px;top:-78px;font-family:var(--f-display);font-stretch:125%;font-weight:900;font-size:120px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(243,240,233,.09);pointer-events:none;user-select:none}
@@ -296,7 +307,8 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
   .rating{margin-top:14px}
   .cue{display:none}
   .panel{left:16px;right:16px;width:auto;top:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:none;min-height:0;height:auto}
-  .st{position:absolute;inset:auto 0 0 0;background:rgba(21,23,25,.8);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+  .st-actions{flex-direction:row}.st-actions .btn{width:auto;flex:1 1 auto}
+  .st{position:absolute;inset:auto 0 0 0;background:rgba(16,18,20,.94);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
   .st-top{margin-bottom:10px}
   .st h2{font-size:clamp(28px,8.4vw,40px)}
   .st h2 span{display:inline}
@@ -475,6 +487,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
       <div class="shots" id="shots">
         <div class="cam" id="cam">
           <img src="images/00-hus.webp" srcset="images/00-hus-960.webp 960w, images/00-hus.webp 1920w, images/00-hus-2752.webp 2752w" sizes="(max-width:860px) 220vw, 170vw" alt="Yellow-brick Danish house seen from above, before demolition" width="1920" height="1072" fetchpriority="high">
+          <img src="images/01b-lofter.webp" srcset="images/01b-lofter-960.webp 960w, images/01b-lofter.webp 1920w, images/01b-lofter-2752.webp 2752w" sizes="(max-width:860px) 220vw, 170vw" alt="Roof removed, the ceilings still in place" width="1920" height="1072" decoding="async">
           <img src="images/01-tag.webp" srcset="images/01-tag-960.webp 960w, images/01-tag.webp 1920w, images/01-tag-2752.webp 2752w" sizes="(max-width:860px) 220vw, 170vw" alt="The roof is removed and the rooms are open from above" width="1920" height="1072" decoding="async">
           <img src="images/02-vaegge.webp" srcset="images/02-vaegge-960.webp 960w, images/02-vaegge.webp 1920w, images/02-vaegge-2752.webp 2752w" sizes="(max-width:860px) 220vw, 170vw" alt="Interior walls taken down, rubble on the floor" width="1920" height="1072" decoding="async">
           <img src="images/03-koekken.webp" srcset="images/03-koekken-960.webp 960w, images/03-koekken.webp 1920w, images/03-koekken-2752.webp 2752w" sizes="(max-width:860px) 220vw, 170vw" alt="Kitchen removed: bare walls, capped pipes and cables" width="1920" height="1072" decoding="async">
@@ -507,27 +520,37 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
         <ol>
           <span class="fill" id="railFill"></span>
           <li><button type="button" data-go="1" data-i18n="rail.1">Roof</button></li>
-          <li><button type="button" data-go="2" data-i18n="rail.2">Walls</button></li>
-          <li><button type="button" data-go="3" data-i18n="rail.3">Kitchen</button></li>
-          <li><button type="button" data-go="4" data-i18n="rail.4">Bathroom</button></li>
-          <li><button type="button" data-go="5" data-i18n="rail.5">Floor</button></li>
-          <li><button type="button" data-go="6" data-i18n="rail.6">House</button></li>
+          <li><button type="button" data-go="2" data-i18n="rail.c">Ceilings</button></li>
+          <li><button type="button" data-go="3" data-i18n="rail.2">Walls</button></li>
+          <li><button type="button" data-go="4" data-i18n="rail.3">Kitchen</button></li>
+          <li><button type="button" data-go="5" data-i18n="rail.4">Bathroom</button></li>
+          <li><button type="button" data-go="6" data-i18n="rail.5">Floor</button></li>
+          <li><button type="button" data-go="7" data-i18n="rail.6">House</button></li>
         </ol>
       </nav>
 
       <div class="panel" id="panel">
         <article class="st" data-stage="1" data-service="roof">
           <span class="big" aria-hidden="true">01</span>
-          <div class="st-top mono"><span><span class="st-num">01</span> / 06</span><span class="waste" data-i18n="s1.waste">Tiles &amp; timber</span></div>
+          <div class="st-top mono"><span><span class="st-num">01</span> / 07</span><span class="waste" data-i18n="s1.waste">Tiles &amp; timber</span></div>
           <h2 class="display" data-i18n-html="s1.title"><span>Roof</span> <span>demolition</span></h2>
           <p class="tag" data-i18n="s1.tag">One roof. Zero unnecessary hassle.</p>
           <p class="desc" data-i18n="s1.desc">We safely dismantle and remove roofs, including structures, roofing materials and related waste.</p>
           <div class="st-actions"><button type="button" class="btn btn-accent" data-quote="roof"><span data-i18n="s1.cta">Get a quote</span><span class="arr" aria-hidden="true">→</span></button><button type="button" class="btn btn-ghost" data-calc=""><span data-i18n="cta.price">See the price</span><span class="arr" aria-hidden="true">→</span></button></div>
           <div class="st-bar"><i></i></div>
         </article>
+        <article class="st" data-stage="1c" data-service="ceiling">
+          <span class="big" aria-hidden="true">02</span>
+          <div class="st-top mono"><span><span class="st-num">02</span> / 07</span><span class="waste" data-i18n="sc.waste">Plaster &amp; insulation</span></div>
+          <h2 class="display" data-i18n-html="sc.title"><span>Ceiling</span> <span>demolition</span></h2>
+          <p class="tag" data-i18n="sc.tag">Ceilings down. Rooms opened up.</p>
+          <p class="desc" data-i18n="sc.desc">Plasterboard and timber ceilings taken down, insulation removed and the waste cleared away.</p>
+          <div class="st-actions"><button type="button" class="btn btn-accent" data-quote="ceiling"><span data-i18n="sc.cta">Get a quote</span><span class="arr" aria-hidden="true">→</span></button><button type="button" class="btn btn-ghost" data-calc="ceiling"><span data-i18n="cta.price">See the price</span><span class="arr" aria-hidden="true">→</span></button></div>
+          <div class="st-bar"><i></i></div>
+        </article>
         <article class="st" data-stage="2" data-service="wall">
           <span class="big" aria-hidden="true">02</span>
-          <div class="st-top mono"><span><span class="st-num">02</span> / 06</span><span class="waste" data-i18n="s2.waste">Plaster &amp; rubble</span></div>
+          <div class="st-top mono"><span><span class="st-num">03</span> / 07</span><span class="waste" data-i18n="s2.waste">Plaster &amp; rubble</span></div>
           <h2 class="display" data-i18n-html="s2.title"><span>Wall</span> <span>demolition</span></h2>
           <p class="tag" data-i18n="s2.tag">Make space. Remove walls.</p>
           <p class="desc" data-i18n="s2.desc">We demolish non-load-bearing walls and remove the resulting construction waste.</p>
@@ -536,7 +559,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
         </article>
         <article class="st" data-stage="3" data-service="kitchen">
           <span class="big" aria-hidden="true">03</span>
-          <div class="st-top mono"><span><span class="st-num">03</span> / 06</span><span class="waste" data-i18n="s3.waste">Wood, metal &amp; appliances</span></div>
+          <div class="st-top mono"><span><span class="st-num">04</span> / 07</span><span class="waste" data-i18n="s3.waste">Wood, metal &amp; appliances</span></div>
           <h2 class="display" data-i18n-html="s3.title"><span>Kitchen</span> <span>demolition</span></h2>
           <p class="tag" data-i18n="s3.tag">From old kitchen to empty space.</p>
           <p class="desc" data-i18n="s3.desc">Complete kitchen demolition — cabinets, countertops, tiles, appliances and related materials.</p>
@@ -545,7 +568,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
         </article>
         <article class="st" data-stage="4" data-service="bath">
           <span class="big" aria-hidden="true">04</span>
-          <div class="st-top mono"><span><span class="st-num">04</span> / 06</span><span class="waste" data-i18n="s4.waste">Tiles &amp; sanitary ware</span></div>
+          <div class="st-top mono"><span><span class="st-num">05</span> / 07</span><span class="waste" data-i18n="s4.waste">Tiles &amp; sanitary ware</span></div>
           <h2 class="display" data-i18n-html="s4.title"><span>Bathroom</span> <span>demolition</span></h2>
           <p class="tag" data-i18n="s4.tag">Down to bare concrete.</p>
           <p class="desc" data-i18n="s4.desc">Tiles, toilet, basin and shower removed, pipes capped and the room left ready for a new bathroom.</p>
@@ -554,7 +577,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
         </article>
         <article class="st" data-stage="5" data-service="floor">
           <span class="big" aria-hidden="true">05</span>
-          <div class="st-top mono"><span><span class="st-num">05</span> / 06</span><span class="waste" data-i18n="s5.waste">Wood &amp; concrete</span></div>
+          <div class="st-top mono"><span><span class="st-num">06</span> / 07</span><span class="waste" data-i18n="s5.waste">Wood &amp; concrete</span></div>
           <h2 class="display" data-i18n-html="s5.title"><span>Floor</span> <span>demolition</span></h2>
           <p class="tag" data-i18n="s5.tag">Down to the ground.</p>
           <p class="desc" data-i18n="s5.desc">We break up and remove concrete floors, tiles, wooden floors and other floor structures.</p>
@@ -563,7 +586,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
         </article>
         <article class="st" data-stage="6" data-service="house">
           <span class="big" aria-hidden="true">06</span>
-          <div class="st-top mono"><span><span class="st-num">06</span> / 06</span><span class="waste" data-i18n="s6.waste">Sorted on site</span></div>
+          <div class="st-top mono"><span><span class="st-num">07</span> / 07</span><span class="waste" data-i18n="s6.waste">Sorted on site</span></div>
           <h2 class="display" data-i18n-html="s6.title"><span>Complete</span> <span>demolition</span></h2>
           <p class="tag" data-i18n="s6.tag">Sometimes the best renovation is a clean start.</p>
           <p class="desc" data-i18n="s6.desc">Complete demolition of houses, summer houses, garages and other structures.</p>
@@ -761,7 +784,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 /* ==========================================================================
    Scroll timeline (shared with the 3D engine)
    ========================================================================== */
-var STAGES=[['hero',0,.05],['roof',.05,.17],['wall',.17,.30],['kitchen',.30,.48],['bath',.48,.66],['floor',.66,.76],['house',.76,.9],['final',.9,1]];
+var STAGES=[['hero',0,.05],['roof',.05,.16],['ceiling',.16,.27],['wall',.27,.38],['kitchen',.38,.52],['bath',.52,.66],['floor',.66,.77],['house',.77,.9],['final',.9,1]];
 var LAST=STAGES.length-1,NST=LAST-1;
 var mobile=matchMedia('(max-width:860px)').matches||/Mobi|Android|iPhone/i.test(navigator.userAgent);
 var low=(mobile&&(navigator.hardwareConcurrency||4)<=4)||(navigator.deviceMemory&&navigator.deviceMemory<=2);
@@ -813,7 +836,7 @@ var DICT={en:{},da:{
   'hero.eyebrow':'Nedrivning · København & Sjælland','hero.h1a':'Vi river ned.','hero.h1b':'Du bygger op.',
   'hero.sub':'Professionel nedrivning på hele Sjælland','hero.small':'Køkkener, vægge, gulve, tage, garager, skure og hele huse.',
   'hero.rating':'Google · 14 anmeldelser','hero.cue':'Scroll for at rive ned ↓',
-  'rail.1':'Tag','rail.2':'Vægge','rail.3':'Køkken','rail.4':'Bad','zoom.lbl':'Nærbillede','rail.5':'Gulv','rail.6':'Hus','rail.7':'Skur','rail.8':'Garage',
+  'rail.1':'Tag','rail.c':'Lofter','sc.waste':'Gips & isolering','sc.title':'<span>Loft&shy;nedrivning</span>','sc.tag':'Loftet ned. Rummet åbnes.','sc.desc':'Gipslofter og trælofter tages ned, isoleringen fjernes, og affaldet køres væk.','sc.cta':'Få et tilbud','rail.2':'Vægge','rail.3':'Køkken','rail.4':'Bad','zoom.lbl':'Nærbillede','rail.5':'Gulv','rail.6':'Hus','rail.7':'Skur','rail.8':'Garage',
   's1.waste':'Tegl & træ','s1.title':'<span>Tag&shy;nedrivning</span>','s1.tag':'Ét tag. Intet unødigt besvær.','s1.desc':'Vi nedtager og fjerner tage sikkert – inklusive konstruktion, tagmaterialer og affald.','s1.cta':'Få et tilbud',
   's2.waste':'Gips & byggeaffald','s2.title':'<span>Væg&shy;nedrivning</span>','s2.tag':'Skab plads. Fjern vægge.','s2.desc':'Vi river ikke-bærende vægge ned og fjerner byggeaffaldet bagefter.','s2.cta':'Få et tilbud',
   's3.waste':'Træ, metal & hvidevarer','s3.title':'<span>Køkken&shy;nedrivning</span>','s3.tag':'Fra gammelt køkken til tomt rum.','s3.desc':'Komplet nedrivning af køkkenet – skabe, bordplader, fliser, hvidevarer og tilhørende materialer.','s3.cta':'Riv mit køkken ned',
@@ -952,11 +975,12 @@ function stageAt(t){for(var i=0;i<STAGES.length;i++)if(t<STAGES[i][2])return i;r
 var CUES=[];function addCue(st,list,kind){list.forEach(function(u){CUES.push({t:STAGES[st][1]+(STAGES[st][2]-STAGES[st][1])*u,k:kind})})}
 function range(a,b,s){var r=[];for(var x=a;x<=b+1e-9;x+=s)r.push(x);return r}
 addCue(1,range(.1,.6,.04),'tile');addCue(1,range(.62,.95,.06),'wood');
-addCue(2,range(.25,.9,.06),'brick');
-addCue(3,range(.45,.7,.04),'tile');addCue(3,[.72,.76],'metal');
-addCue(4,range(.4,.65,.035),'tile');addCue(4,[.5],'glass');
-addCue(5,range(.2,.85,.07),'concrete');
-addCue(6,range(.1,.6,.06),'brick');addCue(6,range(.3,.7,.12),'concrete');
+addCue(2,range(.3,.8,.07),'wood');
+addCue(3,range(.25,.9,.06),'brick');
+addCue(4,range(.45,.7,.04),'tile');addCue(4,[.72,.76],'metal');
+addCue(5,range(.4,.65,.035),'tile');addCue(5,[.5],'glass');
+addCue(6,range(.2,.85,.07),'concrete');
+addCue(7,range(.1,.6,.06),'brick');addCue(7,range(.3,.7,.12),'concrete');
 CUES.sort(function(a,b){return a.t-b.t});
 var prevT=0;
 
@@ -968,7 +992,7 @@ var prevT=0;
 var IW=1920,IH=1072;
 var cam=$('#cam'),LAYERS=$$('#cam img'),zoomTag=$('#zoomTag'),zoomName=$('#zoomName'),shots=$('#shots'),glc=$('#gl'),fxDust=$('#fxDust'),fxFlash=$('#fxFlash');
 // each demolition stage: where the hammer hits (photo px), how close the camera holds, what flies off
-var FXST=[{k:'roof',hit:[1000,420],zoom:1.3,mat:'roof'},{k:'wall',hit:[930,430],zoom:1.5,mat:'wall'},{k:'kitchen',hit:[830,300],zoom:1.75,mat:'kitchen'},
+var FXST=[{k:'roof',hit:[1000,420],zoom:1.3,mat:'roof'},{k:'ceiling',hit:[1080,430],zoom:1.35,mat:'ceiling'},{k:'wall',hit:[930,430],zoom:1.5,mat:'wall'},{k:'kitchen',hit:[830,300],zoom:1.75,mat:'kitchen'},
   {k:'bath',hit:[1100,270],zoom:1.75,mat:'bath'},{k:'floor',hit:[940,540],zoom:1.5,mat:'floor'},{k:'house',hit:[1000,470],zoom:1.0,mat:'house',big:true}];
 FXST.forEach(function(st,i){st.a=STAGES[i+1][1];st.b=STAGES[i+1][2];st.len=st.b-st.a;st.h=st.a+0.32*st.len});
 S.stages=FXST;S.hitT=function(i){return FXST[i].h};
@@ -996,7 +1020,8 @@ function tick(){
   finalEl.classList.toggle('on',k===LAST&&u>.3);
   var mode=t<=.03?'hero':(k===LAST&&u>.2?'final':'stage');if(sticky.dataset.mode!==mode)sticky.dataset.mode=mode;
   // on wide screens the stage panel covers the right third, so frame the subject left of it
-  var c=camAt(t),wide=view.w>900,ax=.5,ay=.5;if(mode==='stage'){if(wide)ax=.36;else ay=.34}
+  var side=(k>=1&&k<=NST&&(k-1)%2)?'l':'r';if(sticky.dataset.side!==side)sticky.dataset.side=side;
+  var c=camAt(t),wide=view.w>900,ax=.5,ay=.5;if(mode==='stage'){if(wide)ax=side==='l'?.64:.36;else ay=.34}
   view.ax+=(ax-view.ax)*.08;view.ay+=(ay-view.ay)*.08;
   var z=reduce?Math.min(c.z,1.05):(wide?c.z:Math.min(c.z,1.45));var S0=Math.max(view.w/IW,view.h/IH),Sc=S0*z;
   // narrow screens: keep the frame centred horizontally so the page does not swing sideways
@@ -1020,6 +1045,10 @@ function tick(){
   if(k===0&&t>.04)sIdx=1;
   if(sIdx!==curStage){arts.forEach(function(a,i){var on=i+1===sIdx;a.classList.toggle('on',on);a.setAttribute('aria-hidden',!on);$$('a,button',a).forEach(function(el){el.tabIndex=on?0:-1})});
     railItems.forEach(function(li,i){li.classList.toggle('on',i+1===sIdx);li.classList.toggle('done',i+1<sIdx||k===LAST)});curStage=sIdx}
+  if(sIdx>0&&!reduce){var ca=arts[sIdx-1],dir=(sIdx-1)%2?-1:1,uu=sIdx===k?u:(k<sIdx?0:1);
+    var ein=sm(clamp01(uu/0.22)),eout=sm(clamp01((uu-0.82)/0.18)),e=ein*(1-eout),W=view.w,H=view.h;
+    ca.style.transform='translate3d('+(dir*(1-e)*Math.min(W*0.6,640)).toFixed(1)+'px,'+((0.5-uu)*H*0.28).toFixed(1)+'px,0) rotate('+(dir*(1-e)*7).toFixed(2)+'deg)';
+    ca.style.opacity=Math.min(1,e*1.4).toFixed(3)}
   if(sIdx>0)bars[sIdx-1].style.transform='scaleX('+(sIdx===k?u:0)+')';
   var ol=rail.querySelector('ol');railFill.style.height=(seg(t,STAGES[1][1],STAGES[NST][2])*(ol.offsetHeight-12))+'px';
 }
