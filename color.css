@@ -1,64 +1,24 @@
-/* Farve-lag (test på køkken-siden) */
-:root{--muted:#D2CCC1;--dim:#9E988D;--line:#34393E;--bg-2:#1A1D20;--bg-3:#23272B;--alt:#15171A;--eco:#7BD88F}
-body{background:radial-gradient(1100px 620px at 88% -8%,rgba(255,194,26,.13),transparent 62%),var(--bg)}
-.hl{color:var(--accent)}
-.kicker{display:inline-block;width:max-content;max-width:100%;padding:6px 12px;border-radius:999px;background:rgba(255,194,26,.12);border:1px solid rgba(255,194,26,.4)}
-.hero .lead{color:#E4DFD5}
-.hero-img{border:0;box-shadow:0 0 0 1px rgba(255,194,26,.35),0 30px 80px -20px rgba(255,194,26,.25)}
+/* Farve-lag (køkken) – kun det vigtigste fremhævet */
+:root{--muted:#D2CCC1;--dim:#9E988D;--line:#34393E;--bg-2:#1A1D20;--bg-3:#212428;--alt:#15171A}
+.hl{color:inherit}
+h1 .hl{color:var(--accent)}
+.hero .lead{color:#F1ECE3}
 
-/* tal-bånd i gult */
-.stats{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.stats div{border-color:rgba(20,18,16,.18)!important}
-.stats b{color:var(--accent-ink)}
-.stats span{color:#3B3320;font-weight:600}
-
-/* skiftende baggrunde */
+/* rolige, skiftende baggrunde */
 #proces,#anmeldelser,#foer-efter{background:var(--alt)}
 section.s{border-top:0}
 
-/* priser */
-.price{border-top:4px solid var(--accent);background:linear-gradient(180deg,rgba(255,194,26,.07),transparent 40%),var(--bg-2)}
+/* tekst mere læsbar */
+.price ul,.box ul,.steps p,.faq details p{color:#DDD7CC}
 .price .amt{color:var(--accent)}
-.price ul{color:#E1DCD2}
+.steps div{border-top-color:var(--accent)}
 
-/* med i prisen / chips */
-.box{border-left:4px solid var(--accent);background:var(--bg-2)}
-.box ul{color:#E1DCD2}
-.box ul li::marker{color:var(--accent)}
-.chips li{background:rgba(255,194,26,.1);border-color:rgba(255,194,26,.45);color:#FFE7A3}
-
-/* proces */
-.steps div{background:var(--bg-3);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;padding:20px}
-.steps .n{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:13px}
-.steps p{color:#D8D2C7}
-
-/* miljø – grøn */
-#miljo .kicker{color:var(--eco);background:rgba(123,216,143,.1);border-color:rgba(123,216,143,.4)}
-#miljo .box{border-left-color:var(--eco)}
-#miljo .box ul li::marker{color:var(--eco)}
-#miljo .hl{color:var(--eco)}
-
-/* anmeldelser */
-.rev{border-top:4px solid var(--accent);background:var(--bg-3)}
-.rev .stars{font-size:18px}
-
-/* faq */
-.faq details[open]{border-color:rgba(255,194,26,.55);background:linear-gradient(180deg,rgba(255,194,26,.06),transparent),var(--bg-2)}
-.faq details[open] summary{color:var(--accent)}
-.faq details p{color:#DDD7CC}
-
-/* tilbud – gult felt */
+/* tilbud – gult felt (vigtigste handling) */
 #tilbud{background:var(--accent);color:var(--accent-ink)}
-#tilbud .kicker{background:rgba(20,18,16,.1);border-color:rgba(20,18,16,.3);color:var(--accent-ink)}
+#tilbud .kicker{color:var(--accent-ink)}
 #tilbud .quote>div p,#tilbud .contact-list li{color:#3B3320!important}
 #tilbud .contact-list a{color:var(--accent-ink);font-size:26px}
 #tilbud form{background:var(--bg);border-color:var(--bg);color:var(--text);box-shadow:0 30px 60px -25px rgba(0,0,0,.55)}
-#tilbud .hl{color:inherit;text-decoration:underline;text-decoration-thickness:6px;text-underline-offset:6px}
-
-/* andre ydelser */
-.others a{background:var(--bg-3)}
-.others a:hover{background:var(--accent);color:var(--accent-ink)}
-.others a:hover span{color:var(--accent-ink)}
 
 /* hero: foto som baggrund */
 .crumbs{position:relative;z-index:2}
@@ -70,7 +30,7 @@ section.s{border-top:0}
   linear-gradient(90deg,rgba(10,11,12,.88) 0%,rgba(10,11,12,.7) 45%,rgba(10,11,12,.35) 100%),
   linear-gradient(0deg,var(--bg) 0%,rgba(14,15,16,0) 28%)}
 .hero h1{font-size:clamp(34px,5vw,72px);text-shadow:0 2px 24px rgba(0,0,0,.5)}
-.hero .lead{color:#F1ECE3;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.hero .lead{text-shadow:0 1px 12px rgba(0,0,0,.6)}
 .hero .trust{color:#E9E4DA}
 .hero .btn-ghost{background:rgba(14,15,16,.55);border-color:rgba(255,255,255,.35);backdrop-filter:blur(6px)}
 @media (max-width:860px){
