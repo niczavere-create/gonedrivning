@@ -59,3 +59,21 @@ section.s{border-top:0}
 .others a{background:var(--bg-3)}
 .others a:hover{background:var(--accent);color:var(--accent-ink)}
 .others a:hover span{color:var(--accent-ink)}
+
+/* hero: foto som baggrund */
+.crumbs{position:relative;z-index:2}
+.crumbs,.crumbs a{color:#E9E4DA}
+.hero{grid-template-columns:minmax(0,760px);position:relative;isolation:isolate;min-height:min(74vh,700px);align-content:center;padding-block:clamp(48px,8vw,96px) clamp(56px,8vw,110px);margin-bottom:clamp(28px,4vw,48px)}
+.hero-img{position:absolute;z-index:-1;top:-60px;bottom:0;left:50%;width:100vw;margin-left:-50vw;aspect-ratio:auto!important;border-radius:0;border:0;box-shadow:none;order:0!important}
+.hero-img img{object-position:center 40%}
+.hero-img::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(10,11,12,.88) 0%,rgba(10,11,12,.7) 45%,rgba(10,11,12,.35) 100%),
+  linear-gradient(0deg,var(--bg) 0%,rgba(14,15,16,0) 28%)}
+.hero h1{font-size:clamp(34px,5vw,72px);text-shadow:0 2px 24px rgba(0,0,0,.5)}
+.hero .lead{color:#F1ECE3;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.hero .trust{color:#E9E4DA}
+.hero .btn-ghost{background:rgba(14,15,16,.55);border-color:rgba(255,255,255,.35);backdrop-filter:blur(6px)}
+@media (max-width:860px){
+  .hero{min-height:auto;padding-block:40px 56px}
+  .hero-img::after{background:linear-gradient(180deg,rgba(10,11,12,.55) 0%,rgba(10,11,12,.72) 55%,var(--bg) 100%)}
+}
