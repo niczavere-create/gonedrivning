@@ -183,3 +183,5 @@ section.s{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--line)}
 .box ul.chips{padding-left:0;display:flex;flex-wrap:wrap;gap:8px}
 .prices{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 .prices:has(> .price:only-child){grid-template-columns:minmax(0,440px)}
+.rev-link,.contact-list a{display:inline-flex;align-items:center;min-height:44px}
+.hdr-phone{padding-block:12px}

@@ -45,14 +45,14 @@
 
 <section class="s" id="foer-efter" style="margin-top:clamp(40px,6vw,72px)"><div class="wrap">
   <div class="s-head"><div><span class="kicker mono">Før &amp; efter</span><h2 class="display">Se forskellen</h2></div><p>Træk i skyderen for at se før og efter vores arbejde.</p></div>
-  <div class="ba" data-ba>
-    <img src="images/p/hus-foer.webp" alt="Før: nedrivning af hus" loading="lazy">
-    <img class="after" src="images/p/hus-efter.webp" alt="Efter: nedrivning af hus" loading="lazy">
+  <div class="ba" data-ba style="aspect-ratio:16/9">
+    <img src="images/p/hus-3d-foer.webp" alt="Før: nedrivning af hus" loading="lazy">
+    <img class="after" src="images/p/hus-3d-efter.webp" alt="Efter: nedrivning af hus" loading="lazy">
     <span class="tag l mono">Før</span><span class="tag r mono">Efter</span>
     <span class="bar" aria-hidden="true"></span><span class="knob" aria-hidden="true">↔</span>
     <input type="range" min="0" max="100" value="50" aria-label="Sammenlign før og efter">
   </div>
-  <p class="ba-note">Efter er en visualisering af den ryddede grund.</p>
+  <p class="ba-note">Billederne er visualiseringer: huset før nedrivning og den ryddede grund bagefter.</p>
 </div></section>
 
 <section class="s" id="priser"><div class="wrap">
@@ -100,7 +100,7 @@
     <ul class="contact-list"><li><a href="tel:+4522123277">+45 22 12 32 77</a></li><li class="mono" style="color:var(--muted)">CVR 44541564 · København &amp; Sjælland</li></ul></div>
   <form action="https://formsubmit.co/niczavere@gmail.com" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_subject" value="Ny forespørgsel: Nedrivning af hus">
-    <input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
     <input type="hidden" name="_next" value="https://gonedrivning.dk/nedrivning-af-hus?sendt=1">
     <label for="f-job">Opgave<select id="f-job" name="Opgave"><option selected>Nedrivning af hus</option><option>Nedrivning af sommerhus</option><option>Nedrivning af køkken</option><option>Nedrivning af vægge</option><option>Nedrivning af gulve</option><option>Nedrivning af lofter</option><option>Nedrivning af garage</option><option>Nedrivning af skur</option><option>Anden nedrivning</option></select></label>
     <div class="row2"><label for="f-name">Navn<input id="f-name" name="Navn" autocomplete="name" required></label>
@@ -137,6 +137,7 @@ document.querySelectorAll('.vid').forEach(function(v){v.addEventListener('click'
   f.src='https://www.youtube-nocookie.com/embed/'+v.dataset.yt+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=v.getAttribute('aria-label');
   v.innerHTML='';v.appendChild(f);v.style.cursor='default'},{once:true})});
 document.querySelectorAll('[data-pick]').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById('f-msg');if(m&&!m.value)m.value='Pakke: '+b.dataset.pick+'\n'})});
+document.querySelectorAll('input[name=_next]').forEach(function(i){i.value=location.origin+location.pathname+'?sendt=1'});
 if(/[?&]sendt=1/.test(location.search)){var n=document.createElement('div');n.setAttribute('role','status');n.textContent='Tak! Vi har modtaget din forespørgsel og vender tilbage inden for 24 timer.';
   n.style.cssText='position:fixed;left:16px;right:16px;top:80px;z-index:60;max-width:560px;margin:auto;background:#FFC21A;color:#141210;padding:16px 18px;border-radius:12px;font-weight:700;box-shadow:0 20px 40px rgba(0,0,0,.4)';document.body.appendChild(n);setTimeout(function(){n.remove()},7000)}
 </script>

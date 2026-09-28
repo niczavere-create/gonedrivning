@@ -475,6 +475,8 @@ a.svc{text-decoration:none;color:inherit}
 .foot-svc{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
 .foot-svc a{color:var(--muted);text-decoration:none;font-size:14px}
 .foot-svc a:hover{color:var(--text)}
+.xlinks a,.meta a{display:inline-flex;align-items:center;min-height:44px}
+.hdr-phone{padding-block:12px}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 </head>
@@ -814,7 +816,7 @@ a.svc{text-decoration:none;color:inherit}
     </div>
     <form id="qForm" action="https://formsubmit.co/niczavere@gmail.com" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="_subject" value="Ny foresporgsel fra gonedrivning.dk">
-      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_next" value="https://niczavere-create.github.io/gonedrivning/?sendt=1">
       <label for="q-service"><span data-i18n="q.service">Job</span>
@@ -1016,6 +1018,7 @@ fileInput.addEventListener('change',function(){
 form.addEventListener('submit',function(){
   var btn=form.querySelector('button[type=submit]');if(btn){btn.disabled=true;btn.style.opacity=.6}
 });
+(function(){var nx=form.querySelector('input[name=_next]');if(nx)nx.value=location.origin+location.pathname+'?sendt=1';})();
 /* thank-you toast after the form posts and comes back */
 if(location.search.indexOf('sendt=1')>-1){
   var tst=document.createElement('div');tst.className='q-sent';
