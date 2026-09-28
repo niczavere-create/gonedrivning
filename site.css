@@ -185,3 +185,4 @@ section.s{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--line)}
 .prices:has(> .price:only-child){grid-template-columns:minmax(0,440px)}
 .rev-link,.contact-list a{display:inline-flex;align-items:center;min-height:44px}
 .hdr-phone{padding-block:12px}
+@media(max-width:420px){.logo{font-size:14px;gap:6px}.logo-go{padding:2px 6px 1px}.hdr .btn-sm{padding:0 12px;font-size:11px;min-height:38px}.hdr .wrap{gap:10px}}
