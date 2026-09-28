@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://gonedrivning.dk/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://gonedrivning.dk/nedrivning-af-hus</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gonedrivning.dk/nedrivning-sommerhus</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gonedrivning.dk/kokken</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gonedrivning.dk/nedrivning-af-vaegge</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gonedrivning.dk/nedrivning-af-gulve</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gonedrivning.dk/nedrivning-af-lofter</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gonedrivning.dk/nedrivning-af-garage</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gonedrivning.dk/nedrivning-skur</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://gonedrivning.dk/nedrivning-af-hus</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/nedrivning-sommerhus</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/kokken</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/nedrivning-af-vaegge</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/nedrivning-af-gulve</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/nedrivning-af-lofter</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/nedrivning-af-garage</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gonedrivning.dk/nedrivning-skur</loc><lastmod>2026-09-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
