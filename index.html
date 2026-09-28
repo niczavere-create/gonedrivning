@@ -418,6 +418,24 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 .cc.on .cc-fields{display:grid}
 .cc-fields select,.cc-fields input{width:100%;background:var(--bg-3);color:var(--text);border:1px solid var(--line-2);border-radius:8px;padding:9px 10px;font:inherit;font-size:14.5px}
 .cc-fields input{font-variant-numeric:tabular-nums}
+.calc-rows{display:grid;gap:10px}
+.crow{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.25fr) minmax(0,.8fr) 44px;gap:10px;align-items:end;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.crow.ok{border-color:rgba(255,194,26,.55)}
+.crow label{display:grid;gap:6px;min-width:0}
+.crow label>span{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+.crow select,.crow input{width:100%;min-height:46px;background:var(--bg-3);color:var(--text);border:1px solid var(--line-2);border-radius:8px;padding:10px 12px;font:inherit;font-size:16px}
+.crow select:focus,.crow input:focus{border-color:var(--accent);outline:none}
+.crow select:disabled,.crow input:disabled{opacity:.45}
+.crow input{font-variant-numeric:tabular-nums}
+.crow .fixed{min-height:46px;display:flex;align-items:center;color:var(--muted);font-size:14px}
+.crow .rm{width:44px;height:46px;border-radius:8px;border:1px solid var(--line-2);background:transparent;color:var(--muted);font-size:20px;cursor:pointer}
+.crow .rm:hover{border-color:var(--accent);color:var(--text)}
+.crow .rate{grid-column:1/-1;margin:-2px 0 0;font-size:13.5px;color:var(--muted)}
+.crow .rate b{color:var(--accent);font-weight:600}
+.crow .rate a{color:var(--accent)}
+.calc-add{justify-self:start;min-height:46px;padding:0 18px;border-radius:999px;border:1px dashed var(--line-2);background:transparent;color:var(--text);font:inherit;font-weight:600;cursor:pointer}
+.calc-add:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:640px){.crow{grid-template-columns:minmax(0,1fr) 44px}.crow .f-cat,.crow .f-type{grid-column:1/-1}.crow .f-m2{grid-column:1/2}}
 .calc-sum{position:sticky;top:calc(var(--hdr-h) + 14px);background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:18px}
 .calc-sum .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;color:var(--dim);text-transform:uppercase}
 .calc-sum .tot{font-family:var(--f-display);font-size:clamp(34px,5vw,46px);font-weight:800;line-height:1.05;color:var(--accent);font-variant-numeric:tabular-nums;margin:2px 0 2px}
@@ -686,17 +704,17 @@ a.svc{text-decoration:none;color:inherit}
     <div class="wrap">
       <div class="sec-head">
         <div><span class="kicker mono" data-i18n="calc.kicker">Prisberegner</span><h2 class="display" id="calc-h" data-i18n="calc.h">Få et prisoverslag med det samme</h2></div>
-        <p data-i18n="calc.p">Vælg dine opgaver, indtast antal m² og se overslaget med det samme - det er de samme priser, vi giver tilbud efter.</p>
+        <p data-i18n="calc.p">Vælg kategori og type, indtast antal m² og se prisen med det samme – det er de samme priser, vi giver tilbud efter.</p>
       </div>
       <div class="calc rv pre">
-        <div class="calc-cats" id="calcCats"></div>
+        <div class="calc-rows"><div class="calc-rows" id="calcCats"></div><button type="button" class="calc-add" id="calcAdd">+ <span data-i18n="calc.add">Tilføj endnu en opgave</span></button></div>
         <aside class="calc-sum" aria-live="polite">
           <div class="lbl" data-i18n="calc.area">Samlet areal</div>
           <div class="vat"><span id="calcArea">0</span> m²</div>
           <div class="lbl" style="margin-top:12px" data-i18n="calc.est">Estimeret pris</div>
           <div class="tot"><span id="calcTotal">0</span> kr</div>
           <div class="vat"><span data-i18n="calc.exvat">ekskl. moms</span> · <span id="calcVat">0</span> kr <span data-i18n="calc.incvat">inkl. 25% moms</span></div>
-          <p class="calc-empty" id="calcEmpty" data-i18n="calc.empty">Vælg en eller flere opgaver for at se en pris.</p>
+          <p class="calc-empty" id="calcEmpty" data-i18n="calc.empty">Vælg en kategori og indtast m² for at se en pris.</p>
           <ul class="calc-lines" id="calcLines" hidden></ul>
           <div class="calc-note"><span aria-hidden="true">i</span><span data-i18n="calc.note">Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.</span></div>
           <button type="button" class="btn btn-accent" id="calcSend"><span data-i18n="calc.send">Send det som en forespørgsel</span><span class="arr" aria-hidden="true">→</span></button>
@@ -896,7 +914,7 @@ addEventListener('keydown',function(e){if(e.key==='Escape'&&!mnav.hidden)setMenu
    Add 'uk' (Ukrainian) by adding a third dictionary with the same keys.
    ========================================================================== */
 var DICT={en:{},da:{
-  'nav.gallery':'Projekter','nav.calc':'Priser','cta.price':'Se prisen','q.mail':'E-mail','q.photos':'Billeder af opgaven (valgfrit)','q.photosCta':'Vælg billeder','q.photosHint':'Op til 5 billeder, maks. 5 MB i alt.','q.hint':'Vi svarer inden for 24 timer. Dine oplysninger deles aldrig med tredjepart.','q.send':'Send forespørgsel','q.sent':'Tak! Vi har modtaget din forespørgsel.','gal.kicker':'Vores projekter','gal.h':'Opgaver vi har afsluttet','gal.p':'Et udvalg af vores gennemførte nedrivningsprojekter for private i København og på hele Sjælland.','calc.kicker':'Prisberegner','calc.h':'Få et prisoverslag med det samme','calc.p':'Vælg dine opgaver, indtast antal m² og se overslaget med det samme - det er de samme priser, vi giver tilbud efter.','calc.area':'Samlet areal','calc.est':'Estimeret pris','calc.exvat':'ekskl. moms','calc.incvat':'inkl. 25% moms','calc.empty':'Vælg en eller flere opgaver for at se en pris.','calc.note':'Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.','calc.send':'Send det som en forespørgsel',
+  'nav.gallery':'Projekter','nav.calc':'Priser','cta.price':'Se prisen','q.mail':'E-mail','q.photos':'Billeder af opgaven (valgfrit)','q.photosCta':'Vælg billeder','q.photosHint':'Op til 5 billeder, maks. 5 MB i alt.','q.hint':'Vi svarer inden for 24 timer. Dine oplysninger deles aldrig med tredjepart.','q.send':'Send forespørgsel','q.sent':'Tak! Vi har modtaget din forespørgsel.','gal.kicker':'Vores projekter','gal.h':'Opgaver vi har afsluttet','gal.p':'Et udvalg af vores gennemførte nedrivningsprojekter for private i København og på hele Sjælland.','calc.kicker':'Prisberegner','calc.h':'Få et prisoverslag med det samme','calc.p':'Vælg kategori og type, indtast antal m² og se prisen med det samme – det er de samme priser, vi giver tilbud efter.','calc.area':'Samlet areal','calc.est':'Estimeret pris','calc.exvat':'ekskl. moms','calc.incvat':'inkl. 25% moms','calc.add':'Tilføj endnu en opgave','calc.empty':'Vælg en kategori og indtast m² for at se en pris.','calc.note':'Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.','calc.send':'Send det som en forespørgsel',
   'a11y.skip':'Gå til indhold','nav.services':'Ydelser','nav.how':'Sådan foregår det','nav.about':'Om os','nav.contact':'Kontakt',
   'cta.quote':'Få et tilbud','cta.free':'Få et gratis tilbud','cta.call':'Ring','cta.contact':'Kontakt os',
   'hero.eyebrow':'Nedrivning · København & Sjælland','hero.h1a':'Vi river ned.','hero.h1b':'Du bygger op.',
@@ -941,7 +959,7 @@ var SERVICES=[
   {k:'lead',hz:1,en:['Lead paint removal','Lead-painted surfaces stripped and disposed of safely.'],da:['Fjernelse af blymaling','Blymalede overflader fjernes og bortskaffes sikkert.'],ic:'<path d="M4 4h13v5H4zM17 6.5h3v6h-8v3M11 15.5h2V21h-2z"/>'}
 ];
 var EXTRA={en:{hz:'Hazardous material',other:'Something else',chimney:'Chimney / fireplace',bath:'Bathroom demolition',pick:'Choose a job'},da:{hz:'Farligt materiale',other:'Noget andet',chimney:'Skorsten / pejs',bath:'Badeværelsesnedrivning',pick:'Vælg opgave'}};
-Object.assign(DICT.en,{"a11y.skip": "Skip to content", "nav.services": "Services", "nav.gallery": "Projects", "nav.calc": "Prices", "nav.how": "How it works", "nav.about": "About", "nav.contact": "Contact", "cta.quote": "Get a quote", "cta.call": "Call", "cta.free": "Get a free quote", "zoom.lbl": "Close-up", "hero.eyebrow": "Demolition · Copenhagen & Zealand", "hero.h1a": "We demolish.", "hero.h1b": "You rebuild.", "hero.cue": "Scroll to demolish ↓", "rail.1": "Roof", "rail.c": "Ceilings", "rail.2": "Walls", "rail.3": "Kitchen", "rail.4": "Bathroom", "rail.5": "Floor", "rail.6": "House", "s1.waste": "Tiles & timber", "s1.tag": "One roof. Zero unnecessary hassle.", "s1.desc": "We safely dismantle and remove roofs, including structures, roofing materials and related waste.", "s1.cta": "Get a quote", "cta.price": "See the price", "sc.waste": "Plaster & insulation", "sc.tag": "Ceilings down. Rooms opened up.", "sc.desc": "Plasterboard and timber ceilings taken down, insulation removed and the waste cleared away.", "sc.cta": "Get a quote", "s2.waste": "Plaster & rubble", "s2.tag": "Make space. Remove walls.", "s2.desc": "We demolish non-load-bearing walls and remove the resulting construction waste.", "s2.cta": "Get a quote", "s3.waste": "Wood, metal & appliances", "s3.tag": "From old kitchen to empty space.", "s3.desc": "Complete kitchen demolition — cabinets, countertops, tiles, appliances and related materials.", "s3.cta": "Demolish my kitchen", "s4.waste": "Tiles & sanitary ware", "s4.tag": "Down to bare concrete.", "s4.desc": "Tiles, toilet, basin and shower removed, pipes capped and the room left ready for a new bathroom.", "s4.cta": "Get a quote", "s5.waste": "Wood & concrete", "s5.tag": "Down to the ground.", "s5.desc": "We break up and remove concrete floors, tiles, wooden floors and other floor structures.", "s5.cta": "Start your project", "s6.waste": "Sorted on site", "s6.tag": "Sometimes the best renovation is a clean start.", "s6.desc": "Complete demolition of houses, summer houses, garages and other structures.", "s6.cta": "Get a free quote", "fin.title": "Ready to clear the site?", "fin.sub": "Tell us what needs to go. We'll take care of the rest.", "fin.brand": "Professional demolition across Zealand", "stats.kicker": "Track record", "stats.h": "Go Nedrivning in numbers", "stats.1": "Demolition projects completed", "stats.2": "Houses demolished", "stats.3": "Walls, kitchens & floors removed", "stats.4": "Construction waste handled", "stats.5": "Google rating · 14 reviews", "how.kicker": "How it works", "how.h": "Four steps to a clear site", "how.p": "No long forms. Send photos, get a price, and we take it from there.", "how.1t": "Tell us what needs to go", "how.1p": "Send a few photos and a short description by SMS, or give us a call.", "how.2t": "Get your quote", "how.2p": "A clear price based on your photos or a site visit.", "how.3t": "We demolish", "how.3p": "Our team does the work safely, efficiently and on schedule.", "how.4t": "We clear the site", "how.4p": "Waste is sorted and removed. You get a clean site, ready for what comes next.", "svc.kicker": "Services", "svc.h": "What we take down", "svc.p": "From a single wall to a complete house. We handle the demolition, sort the waste and leave the site clean.", "calc.kicker": "Price calculator", "calc.h": "Get a price estimate now", "calc.p": "Pick your jobs, enter the square metres and see the estimate straight away - the same rates we quote from.", "calc.area": "Total area", "calc.est": "Estimated price", "calc.exvat": "excl. VAT", "calc.incvat": "incl. 25% VAT", "calc.empty": "Choose one or more jobs to see a price.", "calc.note": "This is a non-binding estimate. The final price depends on access, materials and the size of the job.", "calc.send": "Send this as a request", "why.kicker": "About", "why.h": "Why Go Nedrivning", "why.p": "A demolition company based in the Copenhagen area, working on private homes, summer houses and outbuildings across Zealand.", "why.1t": "Professional", "why.1p": "Experienced demolition team.", "why.2t": "Fast", "why.2p": "Efficient execution and clear communication.", "why.3t": "Responsible", "why.3p": "Waste is handled according to applicable requirements.", "why.4t": "Complete", "why.4p": "From a single wall to a complete house.", "area.kicker": "Where we work", "area.h": "Copenhagen & all of Zealand", "area.more": "+ the rest of Sjælland", "area.p": "We take on demolition jobs for homeowners, landlords and builders in Copenhagen, Frederiksberg, Roskilde, Helsingør and the rest of Zealand — from a single kitchen to a full house with garage and shed.", "gal.kicker": "Our projects", "gal.h": "Jobs we have finished", "gal.p": "A selection of completed demolition jobs for private customers in Copenhagen and across Zealand.", "cta2.h": "Got something to demolish?", "cta2.p": "Send us photos and tell us what needs to be removed.", "cta.contact": "Contact us", "cta2.area": "Copenhagen · Zealand", "foot.p": "Professional demolition in Copenhagen and Zealand.", "q.kicker": "Free quote", "q.h": "What needs to go?", "q.service": "Job", "q.name": "Name", "q.phone": "Phone", "q.mail": "E-mail", "q.msg": "Short description (address, size, anything we should know)", "q.photos": "Photos of the job (optional)", "q.photosCta": "Choose photos", "q.photosHint": "Up to 5 photos, max 5 MB in total.", "q.hint": "We reply within 24 hours. Your details are never shared with third parties.", "q.send": "Send request", "s1.title": "<span>Roof<\/span> <span>demolition<\/span>", "sc.title": "<span>Ceiling<\/span> <span>demolition<\/span>", "s2.title": "<span>Wall<\/span> <span>demolition<\/span>", "s3.title": "<span>Kitchen<\/span> <span>demolition<\/span>", "s4.title": "<span>Bathroom<\/span> <span>demolition<\/span>", "s5.title": "<span>Floor<\/span> <span>demolition<\/span>", "s6.title": "<span>Complete<\/span> <span>demolition<\/span>"});
+Object.assign(DICT.en,{"a11y.skip": "Skip to content", "nav.services": "Services", "nav.gallery": "Projects", "nav.calc": "Prices", "nav.how": "How it works", "nav.about": "About", "nav.contact": "Contact", "cta.quote": "Get a quote", "cta.call": "Call", "cta.free": "Get a free quote", "zoom.lbl": "Close-up", "hero.eyebrow": "Demolition · Copenhagen & Zealand", "hero.h1a": "We demolish.", "hero.h1b": "You rebuild.", "hero.cue": "Scroll to demolish ↓", "rail.1": "Roof", "rail.c": "Ceilings", "rail.2": "Walls", "rail.3": "Kitchen", "rail.4": "Bathroom", "rail.5": "Floor", "rail.6": "House", "s1.waste": "Tiles & timber", "s1.tag": "One roof. Zero unnecessary hassle.", "s1.desc": "We safely dismantle and remove roofs, including structures, roofing materials and related waste.", "s1.cta": "Get a quote", "cta.price": "See the price", "sc.waste": "Plaster & insulation", "sc.tag": "Ceilings down. Rooms opened up.", "sc.desc": "Plasterboard and timber ceilings taken down, insulation removed and the waste cleared away.", "sc.cta": "Get a quote", "s2.waste": "Plaster & rubble", "s2.tag": "Make space. Remove walls.", "s2.desc": "We demolish non-load-bearing walls and remove the resulting construction waste.", "s2.cta": "Get a quote", "s3.waste": "Wood, metal & appliances", "s3.tag": "From old kitchen to empty space.", "s3.desc": "Complete kitchen demolition — cabinets, countertops, tiles, appliances and related materials.", "s3.cta": "Demolish my kitchen", "s4.waste": "Tiles & sanitary ware", "s4.tag": "Down to bare concrete.", "s4.desc": "Tiles, toilet, basin and shower removed, pipes capped and the room left ready for a new bathroom.", "s4.cta": "Get a quote", "s5.waste": "Wood & concrete", "s5.tag": "Down to the ground.", "s5.desc": "We break up and remove concrete floors, tiles, wooden floors and other floor structures.", "s5.cta": "Start your project", "s6.waste": "Sorted on site", "s6.tag": "Sometimes the best renovation is a clean start.", "s6.desc": "Complete demolition of houses, summer houses, garages and other structures.", "s6.cta": "Get a free quote", "fin.title": "Ready to clear the site?", "fin.sub": "Tell us what needs to go. We'll take care of the rest.", "fin.brand": "Professional demolition across Zealand", "stats.kicker": "Track record", "stats.h": "Go Nedrivning in numbers", "stats.1": "Demolition projects completed", "stats.2": "Houses demolished", "stats.3": "Walls, kitchens & floors removed", "stats.4": "Construction waste handled", "stats.5": "Google rating · 14 reviews", "how.kicker": "How it works", "how.h": "Four steps to a clear site", "how.p": "No long forms. Send photos, get a price, and we take it from there.", "how.1t": "Tell us what needs to go", "how.1p": "Send a few photos and a short description by SMS, or give us a call.", "how.2t": "Get your quote", "how.2p": "A clear price based on your photos or a site visit.", "how.3t": "We demolish", "how.3p": "Our team does the work safely, efficiently and on schedule.", "how.4t": "We clear the site", "how.4p": "Waste is sorted and removed. You get a clean site, ready for what comes next.", "svc.kicker": "Services", "svc.h": "What we take down", "svc.p": "From a single wall to a complete house. We handle the demolition, sort the waste and leave the site clean.", "calc.kicker": "Price calculator", "calc.h": "Get a price estimate now", "calc.p": "Choose a category and type, enter the square metres and see the price straight away - the same rates we quote from.", "calc.add": "Add another job", "calc.area": "Total area", "calc.est": "Estimated price", "calc.exvat": "excl. VAT", "calc.incvat": "incl. 25% VAT", "calc.empty": "Choose a category and enter m² to see a price.", "calc.note": "This is a non-binding estimate. The final price depends on access, materials and the size of the job.", "calc.send": "Send this as a request", "why.kicker": "About", "why.h": "Why Go Nedrivning", "why.p": "A demolition company based in the Copenhagen area, working on private homes, summer houses and outbuildings across Zealand.", "why.1t": "Professional", "why.1p": "Experienced demolition team.", "why.2t": "Fast", "why.2p": "Efficient execution and clear communication.", "why.3t": "Responsible", "why.3p": "Waste is handled according to applicable requirements.", "why.4t": "Complete", "why.4p": "From a single wall to a complete house.", "area.kicker": "Where we work", "area.h": "Copenhagen & all of Zealand", "area.more": "+ the rest of Sjælland", "area.p": "We take on demolition jobs for homeowners, landlords and builders in Copenhagen, Frederiksberg, Roskilde, Helsingør and the rest of Zealand — from a single kitchen to a full house with garage and shed.", "gal.kicker": "Our projects", "gal.h": "Jobs we have finished", "gal.p": "A selection of completed demolition jobs for private customers in Copenhagen and across Zealand.", "cta2.h": "Got something to demolish?", "cta2.p": "Send us photos and tell us what needs to be removed.", "cta.contact": "Contact us", "cta2.area": "Copenhagen · Zealand", "foot.p": "Professional demolition in Copenhagen and Zealand.", "q.kicker": "Free quote", "q.h": "What needs to go?", "q.service": "Job", "q.name": "Name", "q.phone": "Phone", "q.mail": "E-mail", "q.msg": "Short description (address, size, anything we should know)", "q.photos": "Photos of the job (optional)", "q.photosCta": "Choose photos", "q.photosHint": "Up to 5 photos, max 5 MB in total.", "q.hint": "We reply within 24 hours. Your details are never shared with third parties.", "q.send": "Send request", "s1.title": "<span>Roof<\/span> <span>demolition<\/span>", "sc.title": "<span>Ceiling<\/span> <span>demolition<\/span>", "s2.title": "<span>Wall<\/span> <span>demolition<\/span>", "s3.title": "<span>Kitchen<\/span> <span>demolition<\/span>", "s4.title": "<span>Bathroom<\/span> <span>demolition<\/span>", "s5.title": "<span>Floor<\/span> <span>demolition<\/span>", "s6.title": "<span>Complete<\/span> <span>demolition<\/span>"});
 
 var lang='en';
 DICT.en['q.sent']='Thanks! We have received your request.';DICT.en['q.photosHint']='Up to 5 photos, max 5 MB in total.';
@@ -1202,41 +1220,41 @@ var CALC=[
   da:['Anden opgave','Har du en anden opgave? Ring til os, så giver vi en pris.'],ask:1}
 ];
 var calcState={};
-function ccKey(c,i){return (c.sk||c.k)+i}
+var CT={da:{cat:'Kategori',type:'Type',m2:'Areal (m²)',pickCat:'Vælg kategori',fixed:'Fast pris',rm:'Fjern',perm2:'kr/m²',call:'Ring til os på 22 12 32 77, så giver vi en pris.',price:'Pris'},
+        en:{cat:'Category',type:'Type',m2:'Area (m²)',pickCat:'Choose category',fixed:'Fixed price',rm:'Remove',perm2:'kr/m²',call:'Call us on 22 12 32 77 and we will price it.',price:'Price'}};
+function ccType(c){return c.fixedOpts||c.opts||[{r:c.rate,en:'Standard',da:'Standard'}]}
+var calcRowsState=[{c:-1,o:0,m2:''}];
 function nf(n){return n.toLocaleString(lang==='da'?'da-DK':'en-GB')}
 function renderCalc(){
-  var box=$('#calcCats');box.innerHTML='';
-  CALC.forEach(function(c,i){
-    var id=ccKey(c,i),st=calcState[id]||(calcState[id]={on:false,opt:0,m2:''});
-    var card=document.createElement('div');card.className='cc'+(st.on?' on':'');card.setAttribute('role','button');card.tabIndex=0;
-    card.setAttribute('aria-pressed',st.on?'true':'false');
-    var fields='';
-    if(!c.ask){fields='<div class="cc-fields">';
-      var list=c.opts||c.fixedOpts;
-      if(list)fields+='<select aria-label="'+c[lang][0]+'">'+list.map(function(o,j){return '<option value="'+j+'"'+(st.opt===j?' selected':'')+'>'+o[lang]+'</option>'}).join('')+'</select>';
-      if(!c.fixedOpts)fields+='<input type="number" min="0" step="1" inputmode="numeric" placeholder="m²" value="'+st.m2+'" aria-label="m²">';
-      fields+='</div>'}
-    card.innerHTML='<span class="tick" aria-hidden="true">'+(st.on?'✓':'')+'</span><h3>'+c[lang][0]+'</h3><p>'+c[lang][1]+'</p>'+fields;
-    card.addEventListener('click',function(e){
-      if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
-      if(c.ask){openQuote('other');return}
-      st.on=!st.on;renderCalc();sumCalc()});
-    card.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target===card){e.preventDefault();card.click()}});
-    var sel=card.querySelector('select'),inp=card.querySelector('input');
-    if(sel)sel.addEventListener('change',function(){st.opt=+sel.value;sumCalc()});
-    if(inp)inp.addEventListener('input',function(){st.m2=inp.value;sumCalc()});
-    box.appendChild(card)});
+  var box=$('#calcCats'),T=CT[lang]||CT.da;box.innerHTML='';
+  calcRowsState.forEach(function(st,ri){
+    var c=CALC[st.c],row=document.createElement('div');row.className='crow';
+    var cat='<label class="f-cat"><span>'+T.cat+'</span><select data-f="c"><option value="-1">'+T.pickCat+'</option>'+
+      CALC.map(function(x,i){return '<option value="'+i+'"'+(st.c===i?' selected':'')+'>'+x[lang][0]+'</option>'}).join('')+'</select></label>';
+    var list=c&&!c.ask?ccType(c):null;
+    var type='<label class="f-type"><span>'+T.type+'</span><select data-f="o"'+(list?'':' disabled')+'>'+(list?list.map(function(o,j){return '<option value="'+j+'"'+(st.o===j?' selected':'')+'>'+o[lang]+'</option>'}).join(''):'<option>–</option>')+'</select></label>';
+    var m2=(c&&c.fixedOpts)?'<label class="f-m2"><span>'+T.m2+'</span><div class="fixed">'+T.fixed+'</div></label>':
+      '<label class="f-m2"><span>'+T.m2+'</span><input data-f="m2" type="number" min="0" step="1" inputmode="decimal" placeholder="0" value="'+st.m2+'"'+(c&&!c.ask?'':' disabled')+'></label>';
+    var rm='<button type="button" class="rm" aria-label="'+T.rm+'" title="'+T.rm+'"'+(calcRowsState.length<2&&st.c<0?' style="visibility:hidden"':'')+'>×</button>';
+    var info='';
+    if(c&&c.ask)info='<p class="rate">'+T.call+'</p>';
+    else if(list){var o=list[st.o]||list[0];info='<p class="rate">'+T.price+': <b>'+(c.fixedOpts?nf(o.price)+' kr':nf(o.r)+' '+T.perm2)+'</b></p>'}
+    row.innerHTML=cat+type+m2+rm+info;
+    if(c&&!c.ask&&(c.fixedOpts||parseFloat(st.m2)>0))row.classList.add('ok');
+    row.querySelector('[data-f=c]').addEventListener('change',function(e){st.c=+e.target.value;st.o=0;renderCalc();sumCalc();var n=box.children[ri];var f=n&&(n.querySelector('input[data-f=m2]:not([disabled])'));if(f)f.focus()});
+    var so=row.querySelector('[data-f=o]');if(so)so.addEventListener('change',function(e){st.o=+e.target.value;renderCalc();sumCalc()});
+    var si=row.querySelector('[data-f=m2]');if(si)si.addEventListener('input',function(e){st.m2=e.target.value;row.classList.toggle('ok',parseFloat(st.m2)>0);sumCalc()});
+    row.querySelector('.rm').addEventListener('click',function(){calcRowsState.splice(ri,1);if(!calcRowsState.length)calcRowsState.push({c:-1,o:0,m2:''});renderCalc();sumCalc()});
+    box.appendChild(row)});
 }
+$('#calcAdd').addEventListener('click',function(){calcRowsState.push({c:-1,o:0,m2:''});renderCalc();var s=$('#calcCats').lastElementChild.querySelector('select');if(s)s.focus()});
 function calcRows(){
   var rows=[],area=0,total=0;
-  CALC.forEach(function(c,i){var st=calcState[ccKey(c,i)];if(!st||!st.on||c.ask)return;
-    var m2=Math.max(0,parseFloat(String(st.m2).replace(',','.'))||0);area+=m2;
-    if(c.fixedOpts){var t=c.fixedOpts[st.opt||0];
-      rows.push({n:c[lang][0]+' ('+t[lang]+')',d:nf(t.price)+' kr',v:t.price});total+=t.price;return}
-    var rate=c.opts?c.opts[st.opt||0].r:c.rate;
-    var name=c[lang][0]+(c.opts?' ('+c.opts[st.opt||0][lang]+')':'');
-    var v=Math.round(rate*m2);
-    rows.push({n:name,d:nf(m2)+' m² × '+nf(rate)+' kr/m² = '+nf(v)+' kr',v:v});total+=v});
+  calcRowsState.forEach(function(st){var c=CALC[st.c];if(!c||c.ask)return;var list=ccType(c),o=list[st.o]||list[0];
+    if(c.fixedOpts){rows.push({n:c[lang][0]+' ('+o[lang]+')',d:nf(o.price)+' kr',v:o.price});total+=o.price;return}
+    var m2=Math.max(0,parseFloat(String(st.m2).replace(',','.'))||0);if(!m2)return;area+=m2;
+    var name=c[lang][0]+(c.opts?' ('+o[lang]+')':''),v=Math.round(o.r*m2);
+    rows.push({n:name,d:nf(m2)+' m² × '+nf(o.r)+' kr/m² = '+nf(v)+' kr',v:v});total+=v});
   return {rows:rows,area:area,total:total};
 }
 function sumCalc(){
@@ -1260,9 +1278,9 @@ renderGal();renderCalc();sumCalc();
 var CALCIDX={kitchen:0,wall:1,floor:2,ceiling:3,garage:4,shed:5,summerhouse:6,house:7};
 document.addEventListener('click',function(e){var b=e.target.closest('[data-calc]');if(!b)return;e.preventDefault();
   var key=b.getAttribute('data-calc'),i=CALCIDX[key];
-  if(i!=null){var c=CALC[i],id=ccKey(c,i);var st=calcState[id]||(calcState[id]={on:false,opt:0,m2:''});st.on=true;renderCalc();sumCalc()}
+  if(i!=null){var e0=calcRowsState.filter(function(r){return r.c<0})[0];if(e0){e0.c=i;e0.o=0}else if(!calcRowsState.some(function(r){return r.c===i}))calcRowsState.push({c:i,o:0,m2:''});renderCalc();sumCalc()}
   var el=$('#calc');if(el){var go=function(sm){var y=el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop)-84;window.scrollTo({top:y,behavior:(sm&&!reduce)?'smooth':'auto'})};go(true);setTimeout(function(){go(false)},900);setTimeout(function(){go(false)},1900)}
-  setTimeout(function(){var f=$('#calcCats .cc.on input')||$('#calcCats .cc');if(f&&f.focus)f.focus()},reduce?60:800)});
+  setTimeout(function(){var f=$('#calcCats input[data-f=m2]:not([disabled])')||$('#calcCats select');if(f&&f.focus)f.focus()},reduce?60:800)});
 
 $$('[data-lang]').forEach(function(b){b.addEventListener('click',function(){setTimeout(function(){renderGal();renderCalc();sumCalc()},0)})});
 
