@@ -535,6 +535,9 @@ a.svc{text-decoration:none;color:inherit}
 .calc-dev .calc-sum .btn{border-radius:14px;min-height:56px;box-shadow:0 5px 0 #a87a00,0 10px 20px -6px rgba(255,194,26,.4)}
 .calc-dev .calc-sum .btn:active{transform:translateY(4px);box-shadow:0 1px 0 #a87a00}
 @media (max-width:560px){.calc-dev{padding:0 10px 14px;border-radius:22px}.calc-top{margin:0 -10px;border-radius:21px 21px 0 0}.calc-dev .calc-sum{padding:12px}.calc-dev .calc-sum .btn{white-space:normal;font-size:13px;padding:0 14px;text-align:center}.calc-lines li{flex-direction:column;gap:2px}.calc-lines b{white-space:normal}.calc-lcd .tot{font-size:40px!important}}
+label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:center!important;justify-content:center;gap:10px;text-align:center;min-height:110px}
+.q-drop-ic{display:flex!important;align-items:center;justify-content:center;width:36px!important;height:36px!important;margin:0 auto;padding:0}
+.q-drop-ic svg{display:block}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 </head>
@@ -888,7 +891,7 @@ a.svc{text-decoration:none;color:inherit}
       <label for="q-msg"><span data-i18n="q.msg">Kort beskrivelse (adresse, størrelse, andet vi skal vide)</span><textarea id="q-msg" name="Besked"></textarea></label>
       <div class="q-files">
         <span class="q-files-lbl" data-i18n="q.photos">Billeder af opgaven (valgfrit)</span>
-        <label class="q-drop" for="q-photos"><span class="q-drop-ic" aria-hidden="true">+</span><span data-i18n="q.photosCta">Vælg billeder</span></label>
+        <label class="q-drop" for="q-photos"><span class="q-drop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span data-i18n="q.photosCta">Vælg billeder</span></label>
         <input id="q-photos" name="attachment" type="file" accept="image/*" multiple>
         <div class="q-thumbs" id="qThumbs"></div>
         <p class="hint" id="qFilesHint" data-i18n="q.photosHint">Op til 5 billeder, maks. 5 MB i alt.</p>
@@ -1277,7 +1280,7 @@ function renderCalc(){
     var rm='<button type="button" class="rm" aria-label="'+T.rm+'" title="'+T.rm+'"'+(calcRowsState.length<2&&st.c<0?' style="visibility:hidden"':'')+'>×</button>';
     var info='';
     if(c&&c.ask)info='<p class="rate">'+T.call+'</p>';
-    else if(list){var o=list[st.o]||list[0];info='<p class="rate">'+T.price+': <b>'+(c.fixedOpts?nf(o.price)+' kr':nf(o.r)+' '+T.perm2)+'</b></p>'}
+    
     row.innerHTML=cat+type+m2+rm+info;
     if(c&&!c.ask&&(c.fixedOpts||parseFloat(st.m2)>0))row.classList.add('ok');
     row.querySelector('[data-f=c]').addEventListener('change',function(e){st.c=+e.target.value;st.o=0;renderCalc();sumCalc();var n=box.children[ri];var f=n&&(n.querySelector('input[data-f=m2]:not([disabled])'));if(f)f.focus()});
