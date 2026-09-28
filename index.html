@@ -1085,13 +1085,6 @@ form.addEventListener('submit',function(){
   var btn=form.querySelector('button[type=submit]');if(btn){btn.disabled=true;btn.style.opacity=.6}
 });
 (function(){var nx=form.querySelector('input[name=_next]');if(nx)nx.value=location.origin+location.pathname+'?sendt=1';})();
-/* thank-you toast after the form posts and comes back */
-if(location.search.indexOf('sendt=1')>-1){
-  var tst=document.createElement('div');tst.className='q-sent';
-  tst.textContent=(DICT[lang]&&DICT[lang]['q.sent'])||'Thanks! We have received your request.';
-  document.body.appendChild(tst);setTimeout(function(){tst.remove()},6000);
-  try{history.replaceState({},'',location.pathname+location.hash)}catch(e){}
-}
 
 /* ==========================================================================
    Stage UI driven by the (smoothed) timeline
@@ -1562,5 +1555,6 @@ G.render=function(p){
   renderer.render(scene,camera)};
 }
 </script>
+<script src="/thanks.js" defer></script>
 </body>
 </html>
