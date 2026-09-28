@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://gonedrivning.dk/images/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap">
 <link rel="preload" as="image" href="images/00-hus.webp" imagesrcset="images/00-hus-960.webp 960w, images/00-hus.webp 1920w" imagesizes="100vw">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Go Nedrivning","alternateName":"gonedrivning.dk","url":"https://gonedrivning.dk/","inLanguage":"da-DK","description":"Nedrivningsfirma i København og på Sjælland: hus, sommerhus, køkken, vægge, gulve, lofter, garage og skur. Fast pris, bortskaffelse og gratis tilbud.","publisher":{"@id":"https://gonedrivning.dk/#business"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://gonedrivning.dk/#business", "name": "Go Nedrivning", "url": "https://gonedrivning.dk/", "telephone": "+45 22 12 32 77", "vatID": "DK44541564", "description": "Professionelt nedrivningsfirma i København og på Sjælland: nedrivning af hus, sommerhus, køkken, vægge, gulve, lofter, garage og skur.", "areaServed": [{"@type": "City", "name": "København"}, {"@type": "City", "name": "Frederiksberg"}, {"@type": "City", "name": "Roskilde"}, {"@type": "City", "name": "Helsingør"}, {"@type": "AdministrativeArea", "name": "Sjælland"}], "address": {"@type": "PostalAddress", "addressRegion": "Sjælland", "addressCountry": "DK"}, "knowsAbout": ["Kitchen demolition", "Wall demolition", "Floor demolition", "Ceiling demolition", "Roof demolition", "Garage demolition", "Shed demolition", "House demolition", "Concrete demolition", "Asbestos removal", "PCB removal", "Lead paint removal"]}</script>
@@ -498,6 +498,43 @@ a.svc{text-decoration:none;color:inherit}
 .xlinks a,.meta a{display:inline-flex;align-items:center;min-height:44px}
 .hdr-phone{padding-block:12px}
 @media(max-width:860px){.sec-head{grid-template-columns:minmax(0,1fr)}}@media(max-width:420px){.sec-head h2{font-size:clamp(26px,8.6vw,36px)}}
+
+/* ---- calculator device look ---- */
+.calc-dev{position:relative;padding:0 clamp(14px,2.4vw,26px) clamp(14px,2.4vw,26px);border-radius:28px;
+  background:linear-gradient(160deg,#2a2e33 0%,#1a1d20 38%,#131517 100%);
+  border:1px solid #3a3f45;box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 -2px 0 rgba(0,0,0,.5) inset,0 40px 90px -30px rgba(0,0,0,.85),0 0 0 6px #0c0d0e,0 0 0 7px #2c3035}
+.calc-dev::before,.calc-dev::after{content:"";position:absolute;bottom:14px;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#6b7178,#23272b 70%);box-shadow:0 1px 0 rgba(255,255,255,.1)}
+.calc-dev::before{left:14px}.calc-dev::after{right:14px}
+.calc-top{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin:0 calc(-1*clamp(14px,2.4vw,26px));padding:14px clamp(16px,2.6vw,28px);border-radius:27px 27px 0 0;
+  background:repeating-linear-gradient(-45deg,#FFC21A 0 18px,#141210 18px 36px);position:relative}
+.calc-top>*{position:relative;z-index:1;background:#141210;color:#FFC21A;padding:6px 12px;border-radius:999px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.calc-brand b{background:#FFC21A;color:#141210;padding:1px 6px;border-radius:4px;margin-right:4px;font-weight:700}
+.calc-model{margin-left:auto}
+.calc-leds{display:flex;gap:7px;padding:9px 12px!important}
+.calc-leds i{width:9px;height:9px;border-radius:50%;background:#3a2f10}
+.calc-leds i.on{background:#FFC21A;box-shadow:0 0 10px #FFC21A,0 0 3px #fff inset;animation:led 2.4s ease-in-out infinite}
+@keyframes led{50%{opacity:.45}}
+@media (max-width:560px){.calc-model{display:none}.calc-leds{margin-left:auto}}
+.calc-dev .crow{background:linear-gradient(180deg,#24282c,#1c1f22);border:1px solid #33383d;border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 4px 0 #0e1011,0 8px 16px -8px rgba(0,0,0,.6)}
+.calc-dev .crow.ok{border-color:rgba(255,194,26,.6)}
+.calc-dev .crow select,.calc-dev .crow input{background:#101214;border-color:#3a3f45;box-shadow:0 2px 6px rgba(0,0,0,.5) inset}
+.calc-dev .crow .rm{background:linear-gradient(180deg,#2e3337,#222629);box-shadow:0 3px 0 #0e1011}
+.calc-dev .crow .rm:active{transform:translateY(2px);box-shadow:0 1px 0 #0e1011}
+.calc-dev .calc-add{border:0;background:linear-gradient(180deg,#2e3337,#222629);box-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 4px 0 #0e1011;border-radius:12px}
+.calc-dev .calc-add:active{transform:translateY(3px);box-shadow:0 1px 0 #0e1011}
+.calc-dev>*:not(.calc-top){margin-top:clamp(14px,2vw,22px)}
+.calc-dev .calc-sum{background:linear-gradient(180deg,#1f2326,#17191c);border:1px solid #33383d;border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 5px 0 #0e1011}
+.calc-lcd{margin:-2px -2px 14px;padding:14px 16px 12px;border-radius:12px;background:#17140a;
+  background-image:repeating-linear-gradient(0deg,rgba(255,194,26,.035) 0 1px,transparent 1px 3px),radial-gradient(120% 90% at 50% 0%,#2a2410,#120f06);
+  border:2px solid #07080a;box-shadow:0 0 0 1px #3a3f45,0 3px 12px rgba(0,0,0,.7) inset;color:#FFC21A;font-family:"Share Tech Mono",var(--f-mono)}
+.calc-lcd .lbl{color:rgba(255,194,26,.55)!important;font-family:"Share Tech Mono",var(--f-mono)!important}
+.calc-lcd .tot{font-family:"Share Tech Mono",var(--f-mono)!important;font-weight:400!important;font-size:clamp(40px,5.2vw,58px)!important;letter-spacing:.02em;text-align:right;color:#FFC21A!important;text-shadow:0 0 14px rgba(255,194,26,.55),0 0 2px rgba(255,194,26,.9)}
+.calc-lcd .vat{color:rgba(255,194,26,.75)!important;text-align:right;font-size:13px}
+.calc-lcd .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.calc-lcd .row1 .vat{font-size:15px}
+.calc-dev .calc-sum .btn{border-radius:14px;min-height:56px;box-shadow:0 5px 0 #a87a00,0 10px 20px -6px rgba(255,194,26,.4)}
+.calc-dev .calc-sum .btn:active{transform:translateY(4px);box-shadow:0 1px 0 #a87a00}
+@media (max-width:560px){.calc-dev{padding:0 10px 14px;border-radius:22px}.calc-top{margin:0 -10px;border-radius:21px 21px 0 0}.calc-dev .calc-sum{padding:12px}.calc-dev .calc-sum .btn{white-space:normal;font-size:13px;padding:0 14px;text-align:center}.calc-lines li{flex-direction:column;gap:2px}.calc-lines b{white-space:normal}.calc-lcd .tot{font-size:40px!important}}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 </head>
@@ -706,14 +743,16 @@ a.svc{text-decoration:none;color:inherit}
         <div><span class="kicker mono" data-i18n="calc.kicker">Prisberegner</span><h2 class="display" id="calc-h" data-i18n="calc.h">Få et prisoverslag med det samme</h2></div>
         <p data-i18n="calc.p">Vælg kategori og type, indtast antal m² og se prisen med det samme – det er de samme priser, vi giver tilbud efter.</p>
       </div>
-      <div class="calc rv pre">
+      <div class="calc calc-dev rv pre">
+        <div class="calc-top" aria-hidden="true"><span class="calc-brand"><b>GO</b> NEDRIVNING</span><span class="calc-model">PRISBEREGNER · PB-26</span><span class="calc-leds"><i></i><i></i><i class="on"></i></span></div>
         <div class="calc-rows"><div class="calc-rows" id="calcCats"></div><button type="button" class="calc-add" id="calcAdd">+ <span data-i18n="calc.add">Tilføj endnu en opgave</span></button></div>
         <aside class="calc-sum" aria-live="polite">
-          <div class="lbl" data-i18n="calc.area">Samlet areal</div>
-          <div class="vat"><span id="calcArea">0</span> m²</div>
-          <div class="lbl" style="margin-top:12px" data-i18n="calc.est">Estimeret pris</div>
+          <div class="calc-lcd">
+          <div class="row1"><div class="lbl" data-i18n="calc.area">Samlet areal</div><div class="vat"><span id="calcArea">0</span> m²</div></div>
+          <div class="lbl" style="margin-top:8px" data-i18n="calc.est">Estimeret pris</div>
           <div class="tot"><span id="calcTotal">0</span> kr</div>
           <div class="vat"><span data-i18n="calc.exvat">ekskl. moms</span> · <span id="calcVat">0</span> kr <span data-i18n="calc.incvat">inkl. 25% moms</span></div>
+          </div>
           <p class="calc-empty" id="calcEmpty" data-i18n="calc.empty">Vælg en kategori og indtast m² for at se en pris.</p>
           <ul class="calc-lines" id="calcLines" hidden></ul>
           <div class="calc-note"><span aria-hidden="true">i</span><span data-i18n="calc.note">Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.</span></div>
