@@ -6,10 +6,17 @@ function gtag(){dataLayer.push(arguments)}
   try{c=localStorage.getItem(KEY)}catch(e){}
   gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c==='yes'?'granted':'denied',wait_for_update:500});
   gtag('js',new Date());gtag('config',ID);
+
+  var PX='5207965659300179',pxOn=false;
+  function pixel(){if(pxOn)return;pxOn=true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init',PX);fbq('track','PageView')}
+  function fb(ev,data){if(pxOn&&window.fbq)fbq('track',ev,data||{})}
+  if(c==='yes')pixel();
   var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;document.head.appendChild(s);
 
   function set(v){try{localStorage.setItem(KEY,v)}catch(e){}
-    gtag('consent','update',{analytics_storage:v==='yes'?'granted':'denied'})}
+    gtag('consent','update',{analytics_storage:v==='yes'?'granted':'denied',ad_storage:v==='yes'?'granted':'denied',ad_user_data:v==='yes'?'granted':'denied',ad_personalization:v==='yes'?'granted':'denied'});if(v==='yes')pixel()}
   function banner(){
     var css='.gn-ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:900;max-width:560px;margin:0 auto;background:#16181b;color:#F3F0E9;border:1px solid #3a3f44;border-radius:16px;padding:16px 16px 14px;box-shadow:0 24px 60px -16px rgba(0,0,0,.8);font:15px/1.5 Archivo,system-ui,sans-serif}'+
       '.gn-ck p{margin:0 0 12px;color:#D2CCC1}.gn-ck b{color:#F3F0E9}.gn-ck div{display:flex;gap:8px}'+
@@ -18,7 +25,7 @@ function gtag(){dataLayer.push(arguments)}
       '@media(max-width:860px){.gn-ck{bottom:84px}}';
     var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
     var b=document.createElement('div');b.className='gn-ck';b.setAttribute('role','dialog');b.setAttribute('aria-label','Cookies');
-    b.innerHTML='<p><b>Vi bruger cookies</b> til anonym statistik (Google Analytics), så vi kan gøre hjemmesiden bedre. Du vælger selv.</p><div><button type="button" class="n">Kun nødvendige</button><button type="button" class="y">Accepter</button></div>';
+    b.innerHTML='<p><b>Vi bruger cookies</b> til statistik (Google Analytics) og til at måle vores annoncer (Meta/Facebook), så vi kan gøre hjemmesiden bedre. Du vælger selv.</p><div><button type="button" class="n">Kun nødvendige</button><button type="button" class="y">Accepter</button></div>';
     b.addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;set(t.classList.contains('y')?'yes':'no');b.remove()});
     document.body.appendChild(b);
   }
@@ -26,7 +33,7 @@ function gtag(){dataLayer.push(arguments)}
 
   /* events */
   document.addEventListener('submit',function(e){var f=e.target;if(f&&/formsubmit/.test(f.action||'')){
-    var j=f.querySelector('[name=Opgave],select');gtag('event','generate_lead',{form_page:location.pathname,job:j?(j.options?j.options[j.selectedIndex].text:j.value):''})}},true);
+    var j=f.querySelector('[name=Opgave],select');var jb=j?(j.options?j.options[j.selectedIndex].text:j.value):'';gtag('event','generate_lead',{form_page:location.pathname,job:jb});fb('Lead',{content_name:jb})}},true);
   document.addEventListener('click',function(e){var a=e.target.closest('a[href^="tel:"],a[href^="mailto:"]');if(!a)return;
-    gtag('event',a.href.indexOf('tel:')===0?'phone_click':'email_click',{link_url:a.href,page:location.pathname})},true);
+    gtag('event',a.href.indexOf('tel:')===0?'phone_click':'email_click',{link_url:a.href,page:location.pathname});fb('Contact')},true);
 })();
