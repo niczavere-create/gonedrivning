@@ -593,15 +593,17 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 @media (max-width:900px){.revs-hint{display:block}}
 .stats-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}.stats-top .kicker{margin:0}
 .stats-badge{display:inline-flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;font-size:14px}.stats-badge .h2stars{color:var(--accent);display:inline-flex;gap:1px}
-.gcard{display:flex;align-items:center;gap:18px;padding:18px 22px;margin:4px 0 22px;border:1px solid var(--line-2);border-radius:18px;background:linear-gradient(135deg,rgba(255,194,26,.10),rgba(255,194,26,0) 60%),var(--bg-2);color:var(--text);text-decoration:none;transition:border-color .2s}
-.gcard:hover{border-color:var(--accent)}
-.gcard-logo{flex:none;width:64px;height:64px;border-radius:50%;background:#fff;display:grid;place-items:center}
-.gcard-score{font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(44px,6vw,64px);line-height:1}
+.gcard{display:flex;align-items:center;gap:18px;padding:22px 0;margin:0;border-top:1px solid var(--line);color:var(--text);text-decoration:none}
+.gcard-logo{flex:none;display:grid;place-items:center}
+.gcard-logo svg{width:48px;height:48px}
+.gcard-score{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:clamp(48px,6vw,72px);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .gcard-mid{display:flex;flex-direction:column;gap:6px}
 .gcard-stars{color:var(--accent);display:inline-flex;gap:2px}
-.gcard-lbl{color:var(--muted);font-size:15px}
+.gcard-lbl{color:var(--muted);font-size:16px}
 .gcard-go{margin-left:auto;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
-@media (max-width:640px){.gcard{flex-wrap:wrap;gap:12px 14px;padding:16px}.gcard-logo{width:52px;height:52px}.gcard-logo svg{width:34px;height:34px}.gcard-stars svg{width:20px;height:20px}.gcard-go{margin-left:0;width:100%}}
+.gcard:hover .gcard-go{text-decoration:underline}
+#results .gcard+.stats{border-top:1px solid var(--line)}
+@media (max-width:640px){.gcard{flex-wrap:wrap;gap:10px 14px;padding:20px 0}.gcard-logo svg{width:38px;height:38px}.gcard-stars svg{width:20px;height:20px}.gcard-go{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
