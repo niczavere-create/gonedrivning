@@ -126,9 +126,9 @@ h1,h2,h3{text-wrap:balance}
 .hero.off{opacity:0;transform:translateY(-24px);pointer-events:none}
 .eyebrow{display:flex;align-items:center;gap:10px;color:var(--muted);margin-bottom:22px}
 .eyebrow::before{content:"";width:28px;height:2px;background:var(--accent)}
-.hero h1{font-size:clamp(40px,5.2vw,88px);font-stretch:115%}
-.hero h1 span{display:block;white-space:nowrap}
-.hero h1 .l2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--text);text-stroke:1.5px var(--text)}
+.hero :is(h1,h2).display{font-size:clamp(40px,5.2vw,88px);font-stretch:115%}
+.hero :is(h1,h2).display span{display:block;white-space:nowrap}
+.hero :is(h1,h2).display .l2{display:block;color:transparent;-webkit-text-stroke:1.5px var(--text);text-stroke:1.5px var(--text)}
 .hero .sub{font-size:clamp(18px,1.6vw,22px);font-weight:600;margin:26px 0 6px;max-width:34ch}
 .hero .small{color:var(--muted);margin:0 0 28px;max-width:46ch;font-size:16px}
 .hero .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
@@ -307,7 +307,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
   .exp{height:1150vh}
   .scrim-hero,.scrim-stage{background:linear-gradient(0deg,rgba(8,9,10,.92) 0%,rgba(8,9,10,.7) 36%,rgba(8,9,10,0) 62%)}
   .hero{left:16px;right:16px;bottom:calc(92px + env(safe-area-inset-bottom,0px));max-width:none}
-  .hero h1{font-size:clamp(34px,10.4vw,56px)}
+  .hero :is(h1,h2).display{font-size:clamp(34px,10.4vw,56px)}
   .hero .sub{margin-top:16px}
   .hero .small{margin-bottom:18px;font-size:15px}
   .hero .row .btn-ghost{display:none}
@@ -371,7 +371,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
   .why div+div{border-top:1px solid var(--line)}
 }
 @media (max-height:700px) and (min-width:861px){
-  .hero h1{font-size:clamp(36px,4.6vw,70px)}
+  .hero :is(h1,h2).display{font-size:clamp(36px,4.6vw,70px)}
   .hero .sub{margin-top:14px}
   .st h2{font-size:40px}
 }
@@ -547,6 +547,22 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
   html.in-exp .mcta{transform:translateY(130%);opacity:0;pointer-events:none}
   html.in-exp .hdr-phone{opacity:0;pointer-events:none;transform:scale(.8)}
 }
+
+/* ---------- Hero with price calculator ---------- */
+.hero2{padding:calc(var(--hdr-h) + 36px) 0 56px;background:radial-gradient(1200px 500px at 85% 0,rgba(255,194,26,.08),transparent 60%)}
+.hero2-in{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;align-items:start}
+@media (min-width:1000px){.hero2-in{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.hero2-txt{padding-top:28px}}
+.hero2-txt{display:grid;gap:20px;align-content:start}
+.hero2-badge{justify-self:start;display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--bg-2);color:var(--muted);text-decoration:none;font-size:14.5px}
+.hero2-badge .h2stars{color:var(--accent);display:inline-flex;gap:1px}.hero2-badge b{color:var(--text)}
+.hero2 h1{margin:0;font-size:clamp(28px,8.4vw,44px);line-height:1}
+@media (min-width:1000px){.hero2 h1{font-size:clamp(38px,3.3vw,52px)}}
+.hero2 h1 em{font-style:normal;color:var(--accent)}
+.hero2-txt>p{margin:0;color:var(--muted);font-size:clamp(16px,1.6vw,19px);line-height:1.55;max-width:520px}
+.hero2-ok{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--muted);font-size:15px}
+.hero2-ok li::before{content:"✓";color:var(--accent);font-weight:800;margin-right:7px}
+.hero2-calc{margin-top:0;grid-template-columns:1fr!important}
+.hero2-calc .calc-sum{position:static}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 </head>
@@ -592,6 +608,32 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 </div>
 
 <main id="main">
+  <section class="hero2" id="calc" aria-labelledby="hero2-h">
+    <div class="wrap hero2-in">
+      <div class="hero2-txt">
+        <a class="hero2-badge" href="#reviews"><span class="h2stars" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></span><b data-i18n="h2.rate">5/5 på Google</b><span data-i18n="h2.count">· 17 anmeldelser</span></a>
+        <h1 class="display" id="hero2-h"><span data-i18n="h2.h1">Nedrivningsfirma på</span> <em data-i18n="h2.h2">hele Sjælland</em></h1>
+        <p data-i18n="h2.p">Køkken, bad, vægge, lofter og hele huse. Se din faste pris med det samme – det er de samme priser, vi giver tilbud efter.</p>
+        <ul class="hero2-ok"><li data-i18n="h2.ok1">Fast pris</li><li data-i18n="h2.ok2">Svar inden for 24 timer</li><li data-i18n="h2.ok3">Affald kørt væk</li></ul>
+      </div>
+      <div class="calc calc-dev hero2-calc">
+        <div class="calc-top" aria-hidden="true"><span class="calc-brand"><b>GO</b> NEDRIVNING</span><span class="calc-model">PRISBEREGNER · PB-26</span><span class="calc-leds"><i></i><i></i><i class="on"></i></span></div>
+        <div class="calc-rows"><div class="calc-rows" id="calcCats"></div><button type="button" class="calc-add" id="calcAdd">+ <span data-i18n="calc.add">Tilføj endnu en opgave</span></button></div>
+        <aside class="calc-sum" aria-live="polite">
+          <div class="calc-lcd">
+          <div class="row1"><div class="lbl" data-i18n="calc.area">Samlet areal</div><div class="vat"><span id="calcArea">0</span> m²</div></div>
+          <div class="lbl" style="margin-top:8px" data-i18n="calc.est">Estimeret pris</div>
+          <div class="tot"><span id="calcTotal">0</span> kr</div>
+          <div class="vat"><span data-i18n="calc.exvat">ekskl. moms</span> · <span id="calcVat">0</span> kr <span data-i18n="calc.incvat">inkl. 25% moms</span></div>
+          </div>
+          <p class="calc-empty" id="calcEmpty" data-i18n="calc.empty">Vælg en kategori og indtast m² for at se en pris.</p>
+          <ul class="calc-lines" id="calcLines" hidden></ul>
+          <div class="calc-note"><span aria-hidden="true">i</span><span data-i18n="calc.note">Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.</span></div>
+          <button type="button" class="btn btn-accent" id="calcSend"><span data-i18n="calc.send">Send det som en forespørgsel</span><span class="arr" aria-hidden="true">→</span></button>
+        </aside>
+      </div>
+    </div>
+  </section>
   <section class="exp" id="top" aria-label="Scroll for at rive ned">
     <div class="exp-sticky" id="sticky">
       <div class="shots" id="shots">
@@ -614,7 +656,7 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 
       <div class="hero" id="hero">
         <div class="eyebrow mono" data-i18n="hero.eyebrow">Nedrivning · København &amp; Sjælland</div>
-        <h1 class="display"><span class="l1" data-i18n="hero.h1a">Vi river ned.</span> <span class="l2" data-i18n="hero.h1b">Du bygger op.</span></h1>
+        <h2 class="display"><span class="l1" data-i18n="hero.h1a">Vi river ned.</span> <span class="l2" data-i18n="hero.h1b">Du bygger op.</span></h2>
       </div>
 
       <div class="cue mono" id="cue"><span data-i18n="hero.cue">Scroll for at rive ned ↓</span><i></i></div>
@@ -718,7 +760,6 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
         <div class="stat"><b data-count="94">94<small>+</small></b><span data-i18n="stats.2">Huse revet ned</span></div>
         <div class="stat"><b data-count="958">958<small>+</small></b><span data-i18n="stats.3">Vægge, køkkener &amp; gulve fjernet</span></div>
         <div class="stat"><b data-count="43946">43,946<small>m³</small></b><span data-i18n="stats.4">Byggeaffald håndteret</span></div>
-        <div class="stat"><b>5.0<small>★</small></b><span data-i18n="stats.5">Google-bedømmelse · 14 anmeldelser</span></div>
       </div>
     </div>
   </section>
@@ -749,30 +790,6 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
     </div>
   </section>
 
-  <section class="block" id="calc" aria-labelledby="calc-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div><span class="kicker mono" data-i18n="calc.kicker">Prisberegner</span><h2 class="display" id="calc-h" data-i18n="calc.h">Få et prisoverslag med det samme</h2></div>
-        <p data-i18n="calc.p">Vælg kategori og type, indtast antal m² og se prisen med det samme – det er de samme priser, vi giver tilbud efter.</p>
-      </div>
-      <div class="calc calc-dev rv pre">
-        <div class="calc-top" aria-hidden="true"><span class="calc-brand"><b>GO</b> NEDRIVNING</span><span class="calc-model">PRISBEREGNER · PB-26</span><span class="calc-leds"><i></i><i></i><i class="on"></i></span></div>
-        <div class="calc-rows"><div class="calc-rows" id="calcCats"></div><button type="button" class="calc-add" id="calcAdd">+ <span data-i18n="calc.add">Tilføj endnu en opgave</span></button></div>
-        <aside class="calc-sum" aria-live="polite">
-          <div class="calc-lcd">
-          <div class="row1"><div class="lbl" data-i18n="calc.area">Samlet areal</div><div class="vat"><span id="calcArea">0</span> m²</div></div>
-          <div class="lbl" style="margin-top:8px" data-i18n="calc.est">Estimeret pris</div>
-          <div class="tot"><span id="calcTotal">0</span> kr</div>
-          <div class="vat"><span data-i18n="calc.exvat">ekskl. moms</span> · <span id="calcVat">0</span> kr <span data-i18n="calc.incvat">inkl. 25% moms</span></div>
-          </div>
-          <p class="calc-empty" id="calcEmpty" data-i18n="calc.empty">Vælg en kategori og indtast m² for at se en pris.</p>
-          <ul class="calc-lines" id="calcLines" hidden></ul>
-          <div class="calc-note"><span aria-hidden="true">i</span><span data-i18n="calc.note">Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.</span></div>
-          <button type="button" class="btn btn-accent" id="calcSend"><span data-i18n="calc.send">Send det som en forespørgsel</span><span class="arr" aria-hidden="true">→</span></button>
-        </aside>
-      </div>
-    </div>
-  </section>
 
   <section class="block" id="about" aria-labelledby="about-h">
     <div class="wrap">
@@ -812,7 +829,7 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 
   <section class="block" id="reviews" aria-labelledby="reviews-h">
     <div class="wrap">
-      <div class="sec-head"><div><span class="kicker mono">★ 5,0 på Google · 14 anmeldelser</span><h2 class="display" id="reviews-h">Det siger kunderne</h2></div><p>Rigtige anmeldelser fra vores Google-profil.</p></div>
+      <div class="sec-head"><div><span class="kicker mono">★ 5,0 på Google · 17 anmeldelser</span><h2 class="display" id="reviews-h">Det siger kunderne</h2></div><p>Rigtige anmeldelser fra vores Google-profil.</p></div>
       <div class="revs"><figure class="rev"><div class="stars" aria-label="5 ud af 5 stjerner">★★★★★</div><blockquote>“Fik revet et hus ned i København – de klarede alt fra tilladelser til bortskaffelse perfekt. Anbefales varmt.”</blockquote><figcaption>Mikkel Sørensen · Google</figcaption></figure><figure class="rev"><div class="stars" aria-label="5 ud af 5 stjerner">★★★★★</div><blockquote>“Vi var meget tilfredse med Yurii og hans teams arbejde. Vi endte med at bruge dem til flere opgaver, og deres priser var meget rimelige – også når opgavens omfang ændrede sig.”</blockquote><figcaption>Stefan Agergaard Hansen · Google</figcaption></figure><figure class="rev"><div class="stars" aria-label="5 ud af 5 stjerner">★★★★★</div><blockquote>“Jeg brugte Go Nedrivnings hjælp til at nedrive en gammel lade. Teamet klarede opgaven hurtigt og professionelt. Kan varmt anbefales – meget ansvarlige folk!”</blockquote><figcaption>Sofiia Rodionova · Google</figcaption></figure><figure class="rev"><div class="stars" aria-label="5 ud af 5 stjerner">★★★★★</div><blockquote>“Fik revet en gammel mur ned hurtigt og problemfrit. Meget professionelle, og prisen var fair. Tak for det gode arbejde!”</blockquote><figcaption>Magnus Nielsen · Google</figcaption></figure><figure class="rev"><div class="stars" aria-label="5 ud af 5 stjerner">★★★★★</div><blockquote>“Fik nedrevet vores kolonihavehus samt sortering og bortkørsel af affald – hurtigt og til en god pris. Anbefales varmt.”</blockquote><figcaption>Björn Illemann · Google</figcaption></figure><figure class="rev"><div class="stars" aria-label="5 ud af 5 stjerner">★★★★★</div><blockquote>“Fik hjælp til at opbryde 60 m² trægulv og sandunderlag. Pålidelig, til tiden og udførte arbejdet som aftalt!”</blockquote><figcaption>S. F. · Google</figcaption></figure></div>
       <p class="xlinks"><a href="https://www.google.com/maps?cid=13925887048254488472" target="_blank" rel="noopener">Se alle anmeldelser på Google →</a></p>
     </div>
@@ -967,13 +984,14 @@ addEventListener('keydown',function(e){if(e.key==='Escape'&&!mnav.hidden)setMenu
    i18n — English is read from the HTML, other languages live here.
    Add 'uk' (Ukrainian) by adding a third dictionary with the same keys.
    ========================================================================== */
-var DICT={en:{},da:{
+var DICT={en:{},da:{'h2.rate':'5/5 på Google','h2.count':'· 17 anmeldelser','h2.h1':'Nedrivningsfirma på','h2.h2':'hele Sjælland','h2.p':'Køkken, bad, vægge, lofter og hele huse. Se din faste pris med det samme – det er de samme priser, vi giver tilbud efter.','h2.ok1':'Fast pris','h2.ok2':'Svar inden for 24 timer','h2.ok3':'Affald kørt væk',
+
   'nav.gallery':'Projekter','nav.calc':'Priser','cta.price':'Se prisen','q.mail':'E-mail','q.photos':'Billeder af opgaven (valgfrit)','q.photosCta':'Vælg billeder','q.photosHint':'Op til 5 billeder, maks. 5 MB i alt.','q.hint':'Vi svarer inden for 24 timer. Dine oplysninger deles aldrig med tredjepart.','q.send':'Send forespørgsel','q.sent':'Tak! Vi har modtaget din forespørgsel.','gal.kicker':'Vores projekter','gal.h':'Opgaver vi har afsluttet','gal.p':'Et udvalg af vores gennemførte nedrivningsprojekter for private i København og på hele Sjælland.','calc.kicker':'Prisberegner','calc.h':'Få et prisoverslag med det samme','calc.p':'Vælg kategori og type, indtast antal m² og se prisen med det samme – det er de samme priser, vi giver tilbud efter.','calc.area':'Samlet areal','calc.est':'Estimeret pris','calc.exvat':'ekskl. moms','calc.incvat':'inkl. 25% moms','calc.add':'Tilføj endnu en opgave','calc.empty':'Vælg en kategori og indtast m² for at se en pris.','calc.note':'Dette er et uforpligtende overslag. Den endelige pris afhænger af adgangsforhold, materialer og opgavens omfang.','calc.send':'Send det som en forespørgsel',
   'a11y.skip':'Gå til indhold','nav.services':'Ydelser','nav.how':'Sådan foregår det','nav.about':'Om os','nav.contact':'Kontakt',
   'cta.quote':'Få et tilbud','cta.free':'Få et gratis tilbud','cta.call':'Ring','cta.contact':'Kontakt os',
   'hero.eyebrow':'Nedrivning · København & Sjælland','hero.h1a':'Vi river ned.','hero.h1b':'Du bygger op.',
   'hero.sub':'Professionel nedrivning på hele Sjælland','hero.small':'Køkkener, vægge, gulve, tage, garager, skure og hele huse.',
-  'hero.rating':'Google · 14 anmeldelser','hero.cue':'Scroll for at rive ned ↓',
+  'hero.rating':'Google · 17 anmeldelser','hero.cue':'Scroll for at rive ned ↓',
   'rail.1':'Tag','rail.c':'Lofter','sc.waste':'Gips & isolering','sc.title':'<span>Loft&shy;nedrivning</span>','sc.tag':'Loftet ned. Rummet åbnes.','sc.desc':'Gipslofter og trælofter tages ned, isoleringen fjernes, og affaldet køres væk.','sc.cta':'Få et tilbud','rail.2':'Vægge','rail.3':'Køkken','rail.4':'Bad','zoom.lbl':'Nærbillede','rail.5':'Gulv','rail.6':'Hus','rail.7':'Skur','rail.8':'Garage',
   's1.waste':'Tegl & træ','s1.title':'<span>Tag&shy;nedrivning</span>','s1.tag':'Ét tag. Intet unødigt besvær.','s1.desc':'Vi nedtager og fjerner tage sikkert – inklusive konstruktion, tagmaterialer og affald.','s1.cta':'Få et tilbud',
   's2.waste':'Gips & byggeaffald','s2.title':'<span>Væg&shy;nedrivning</span>','s2.tag':'Skab plads. Fjern vægge.','s2.desc':'Vi river ikke-bærende vægge ned og fjerner byggeaffaldet bagefter.','s2.cta':'Få et tilbud',
@@ -984,7 +1002,7 @@ var DICT={en:{},da:{
   's7.waste':'Træ & tagpap','s7.title':'<span>Nedrivning</span> <span>af skur</span>','s7.tag':'Lille bygning. Samme professionelle tilgang.','s7.desc':'Skure, havehuse og mindre udhuse fjernes hurtigt og ansvarligt.','s7.cta':'Få et tilbud',
   's8.waste':'Tegl, beton & metal','s8.title':'<span>Garage&shy;nedrivning</span>','s8.tag':'Ryd pladsen. Start forfra.','s8.desc':'Professionel nedrivning og bortskaffelse af garager og andre udhuse.','s8.cta':'Bed om et tilbud',
   'fin.title':'Klar til at rydde grunden?','fin.sub':'Fortæl os, hvad der skal væk. Vi klarer resten.','fin.brand':'Professionel nedrivning på hele Sjælland',
-  'stats.kicker':'Resultater','stats.h':'Go Nedrivning i tal','stats.1':'Gennemførte nedrivningsopgaver','stats.2':'Huse revet ned','stats.3':'Vægge, køkkener & gulve fjernet','stats.4':'Byggeaffald håndteret','stats.5':'Google-bedømmelse · 14 anmeldelser',
+  'stats.kicker':'Resultater','stats.h':'Go Nedrivning i tal','stats.1':'Gennemførte nedrivningsopgaver','stats.2':'Huse revet ned','stats.3':'Vægge, køkkener & gulve fjernet','stats.4':'Byggeaffald håndteret','stats.5':'Google-bedømmelse · 17 anmeldelser',
   'svc.kicker':'Ydelser','svc.h':'Det river vi ned','svc.p':'Fra en enkelt væg til et helt hus. Vi står for nedrivningen, sorterer affaldet og efterlader pladsen ryddet.',
   'how.kicker':'Sådan foregår det','how.h':'Fire trin til en ryddet grund','how.p':'Ingen lange formularer. Send billeder, få en pris, så klarer vi resten.',
   'how.1t':'Fortæl, hvad der skal væk','how.1p':'Send et par billeder og en kort beskrivelse på sms – eller ring til os.',
@@ -1013,7 +1031,7 @@ var SERVICES=[
   {k:'lead',hz:1,en:['Lead paint removal','Lead-painted surfaces stripped and disposed of safely.'],da:['Fjernelse af blymaling','Blymalede overflader fjernes og bortskaffes sikkert.'],ic:'<path d="M4 4h13v5H4zM17 6.5h3v6h-8v3M11 15.5h2V21h-2z"/>'}
 ];
 var EXTRA={en:{hz:'Hazardous material',other:'Something else',chimney:'Chimney / fireplace',bath:'Bathroom demolition',pick:'Choose a job'},da:{hz:'Farligt materiale',other:'Noget andet',chimney:'Skorsten / pejs',bath:'Badeværelsesnedrivning',pick:'Vælg opgave'}};
-Object.assign(DICT.en,{"a11y.skip": "Skip to content", "nav.services": "Services", "nav.gallery": "Projects", "nav.calc": "Prices", "nav.how": "How it works", "nav.about": "About", "nav.contact": "Contact", "cta.quote": "Get a quote", "cta.call": "Call", "cta.free": "Get a free quote", "zoom.lbl": "Close-up", "hero.eyebrow": "Demolition · Copenhagen & Zealand", "hero.h1a": "We demolish.", "hero.h1b": "You rebuild.", "hero.cue": "Scroll to demolish ↓", "rail.1": "Roof", "rail.c": "Ceilings", "rail.2": "Walls", "rail.3": "Kitchen", "rail.4": "Bathroom", "rail.5": "Floor", "rail.6": "House", "s1.waste": "Tiles & timber", "s1.tag": "One roof. Zero unnecessary hassle.", "s1.desc": "We safely dismantle and remove roofs, including structures, roofing materials and related waste.", "s1.cta": "Get a quote", "cta.price": "See the price", "sc.waste": "Plaster & insulation", "sc.tag": "Ceilings down. Rooms opened up.", "sc.desc": "Plasterboard and timber ceilings taken down, insulation removed and the waste cleared away.", "sc.cta": "Get a quote", "s2.waste": "Plaster & rubble", "s2.tag": "Make space. Remove walls.", "s2.desc": "We demolish non-load-bearing walls and remove the resulting construction waste.", "s2.cta": "Get a quote", "s3.waste": "Wood, metal & appliances", "s3.tag": "From old kitchen to empty space.", "s3.desc": "Complete kitchen demolition — cabinets, countertops, tiles, appliances and related materials.", "s3.cta": "Demolish my kitchen", "s4.waste": "Tiles & sanitary ware", "s4.tag": "Down to bare concrete.", "s4.desc": "Tiles, toilet, basin and shower removed, pipes capped and the room left ready for a new bathroom.", "s4.cta": "Get a quote", "s5.waste": "Wood & concrete", "s5.tag": "Down to the ground.", "s5.desc": "We break up and remove concrete floors, tiles, wooden floors and other floor structures.", "s5.cta": "Start your project", "s6.waste": "Sorted on site", "s6.tag": "Sometimes the best renovation is a clean start.", "s6.desc": "Complete demolition of houses, summer houses, garages and other structures.", "s6.cta": "Get a free quote", "fin.title": "Ready to clear the site?", "fin.sub": "Tell us what needs to go. We'll take care of the rest.", "fin.brand": "Professional demolition across Zealand", "stats.kicker": "Track record", "stats.h": "Go Nedrivning in numbers", "stats.1": "Demolition projects completed", "stats.2": "Houses demolished", "stats.3": "Walls, kitchens & floors removed", "stats.4": "Construction waste handled", "stats.5": "Google rating · 14 reviews", "how.kicker": "How it works", "how.h": "Four steps to a clear site", "how.p": "No long forms. Send photos, get a price, and we take it from there.", "how.1t": "Tell us what needs to go", "how.1p": "Send a few photos and a short description by SMS, or give us a call.", "how.2t": "Get your quote", "how.2p": "A clear price based on your photos or a site visit.", "how.3t": "We demolish", "how.3p": "Our team does the work safely, efficiently and on schedule.", "how.4t": "We clear the site", "how.4p": "Waste is sorted and removed. You get a clean site, ready for what comes next.", "svc.kicker": "Services", "svc.h": "What we take down", "svc.p": "From a single wall to a complete house. We handle the demolition, sort the waste and leave the site clean.", "calc.kicker": "Price calculator", "calc.h": "Get a price estimate now", "calc.p": "Choose a category and type, enter the square metres and see the price straight away - the same rates we quote from.", "calc.add": "Add another job", "calc.area": "Total area", "calc.est": "Estimated price", "calc.exvat": "excl. VAT", "calc.incvat": "incl. 25% VAT", "calc.empty": "Choose a category and enter m² to see a price.", "calc.note": "This is a non-binding estimate. The final price depends on access, materials and the size of the job.", "calc.send": "Send this as a request", "why.kicker": "About", "why.h": "Why Go Nedrivning", "why.p": "A demolition company based in the Copenhagen area, working on private homes, summer houses and outbuildings across Zealand.", "why.1t": "Professional", "why.1p": "Experienced demolition team.", "why.2t": "Fast", "why.2p": "Efficient execution and clear communication.", "why.3t": "Responsible", "why.3p": "Waste is handled according to applicable requirements.", "why.4t": "Complete", "why.4p": "From a single wall to a complete house.", "area.kicker": "Where we work", "area.h": "Copenhagen & all of Zealand", "area.more": "+ the rest of Sjælland", "area.p": "We take on demolition jobs for homeowners, landlords and builders in Copenhagen, Frederiksberg, Roskilde, Helsingør and the rest of Zealand — from a single kitchen to a full house with garage and shed.", "gal.kicker": "Our projects", "gal.h": "Jobs we have finished", "gal.p": "A selection of completed demolition jobs for private customers in Copenhagen and across Zealand.", "cta2.h": "Got something to demolish?", "cta2.p": "Send us photos and tell us what needs to be removed.", "cta.contact": "Contact us", "cta2.area": "Copenhagen · Zealand", "foot.p": "Professional demolition in Copenhagen and Zealand.", "q.kicker": "Free quote", "q.h": "What needs to go?", "q.service": "Job", "q.name": "Name", "q.phone": "Phone", "q.mail": "E-mail", "q.msg": "Short description (address, size, anything we should know)", "q.photos": "Photos of the job (optional)", "q.photosCta": "Choose photos", "q.photosHint": "Up to 5 photos, max 5 MB in total.", "q.hint": "We reply within 24 hours. Your details are never shared with third parties.", "q.send": "Send request", "s1.title": "<span>Roof<\/span> <span>demolition<\/span>", "sc.title": "<span>Ceiling<\/span> <span>demolition<\/span>", "s2.title": "<span>Wall<\/span> <span>demolition<\/span>", "s3.title": "<span>Kitchen<\/span> <span>demolition<\/span>", "s4.title": "<span>Bathroom<\/span> <span>demolition<\/span>", "s5.title": "<span>Floor<\/span> <span>demolition<\/span>", "s6.title": "<span>Complete<\/span> <span>demolition<\/span>"});
+Object.assign(DICT.en,{"h2.rate": "5/5 on Google", "h2.count": "· 17 reviews", "h2.h1": "Demolition company across", "h2.h2": "all of Zealand", "h2.p": "Kitchens, bathrooms, walls, ceilings and whole houses. See your fixed price right away - the same rates we quote from.", "h2.ok1": "Fixed price", "h2.ok2": "Reply within 24 hours", "h2.ok3": "Waste hauled away", "a11y.skip": "Skip to content", "nav.services": "Services", "nav.gallery": "Projects", "nav.calc": "Prices", "nav.how": "How it works", "nav.about": "About", "nav.contact": "Contact", "cta.quote": "Get a quote", "cta.call": "Call", "cta.free": "Get a free quote", "zoom.lbl": "Close-up", "hero.eyebrow": "Demolition · Copenhagen & Zealand", "hero.h1a": "We demolish.", "hero.h1b": "You rebuild.", "hero.cue": "Scroll to demolish ↓", "rail.1": "Roof", "rail.c": "Ceilings", "rail.2": "Walls", "rail.3": "Kitchen", "rail.4": "Bathroom", "rail.5": "Floor", "rail.6": "House", "s1.waste": "Tiles & timber", "s1.tag": "One roof. Zero unnecessary hassle.", "s1.desc": "We safely dismantle and remove roofs, including structures, roofing materials and related waste.", "s1.cta": "Get a quote", "cta.price": "See the price", "sc.waste": "Plaster & insulation", "sc.tag": "Ceilings down. Rooms opened up.", "sc.desc": "Plasterboard and timber ceilings taken down, insulation removed and the waste cleared away.", "sc.cta": "Get a quote", "s2.waste": "Plaster & rubble", "s2.tag": "Make space. Remove walls.", "s2.desc": "We demolish non-load-bearing walls and remove the resulting construction waste.", "s2.cta": "Get a quote", "s3.waste": "Wood, metal & appliances", "s3.tag": "From old kitchen to empty space.", "s3.desc": "Complete kitchen demolition — cabinets, countertops, tiles, appliances and related materials.", "s3.cta": "Demolish my kitchen", "s4.waste": "Tiles & sanitary ware", "s4.tag": "Down to bare concrete.", "s4.desc": "Tiles, toilet, basin and shower removed, pipes capped and the room left ready for a new bathroom.", "s4.cta": "Get a quote", "s5.waste": "Wood & concrete", "s5.tag": "Down to the ground.", "s5.desc": "We break up and remove concrete floors, tiles, wooden floors and other floor structures.", "s5.cta": "Start your project", "s6.waste": "Sorted on site", "s6.tag": "Sometimes the best renovation is a clean start.", "s6.desc": "Complete demolition of houses, summer houses, garages and other structures.", "s6.cta": "Get a free quote", "fin.title": "Ready to clear the site?", "fin.sub": "Tell us what needs to go. We'll take care of the rest.", "fin.brand": "Professional demolition across Zealand", "stats.kicker": "Track record", "stats.h": "Go Nedrivning in numbers", "stats.1": "Demolition projects completed", "stats.2": "Houses demolished", "stats.3": "Walls, kitchens & floors removed", "stats.4": "Construction waste handled", "stats.5": "Google rating · 17 reviews", "how.kicker": "How it works", "how.h": "Four steps to a clear site", "how.p": "No long forms. Send photos, get a price, and we take it from there.", "how.1t": "Tell us what needs to go", "how.1p": "Send a few photos and a short description by SMS, or give us a call.", "how.2t": "Get your quote", "how.2p": "A clear price based on your photos or a site visit.", "how.3t": "We demolish", "how.3p": "Our team does the work safely, efficiently and on schedule.", "how.4t": "We clear the site", "how.4p": "Waste is sorted and removed. You get a clean site, ready for what comes next.", "svc.kicker": "Services", "svc.h": "What we take down", "svc.p": "From a single wall to a complete house. We handle the demolition, sort the waste and leave the site clean.", "calc.kicker": "Price calculator", "calc.h": "Get a price estimate now", "calc.p": "Choose a category and type, enter the square metres and see the price straight away - the same rates we quote from.", "calc.add": "Add another job", "calc.area": "Total area", "calc.est": "Estimated price", "calc.exvat": "excl. VAT", "calc.incvat": "incl. 25% VAT", "calc.empty": "Choose a category and enter m² to see a price.", "calc.note": "This is a non-binding estimate. The final price depends on access, materials and the size of the job.", "calc.send": "Send this as a request", "why.kicker": "About", "why.h": "Why Go Nedrivning", "why.p": "A demolition company based in the Copenhagen area, working on private homes, summer houses and outbuildings across Zealand.", "why.1t": "Professional", "why.1p": "Experienced demolition team.", "why.2t": "Fast", "why.2p": "Efficient execution and clear communication.", "why.3t": "Responsible", "why.3p": "Waste is handled according to applicable requirements.", "why.4t": "Complete", "why.4p": "From a single wall to a complete house.", "area.kicker": "Where we work", "area.h": "Copenhagen & all of Zealand", "area.more": "+ the rest of Sjælland", "area.p": "We take on demolition jobs for homeowners, landlords and builders in Copenhagen, Frederiksberg, Roskilde, Helsingør and the rest of Zealand — from a single kitchen to a full house with garage and shed.", "gal.kicker": "Our projects", "gal.h": "Jobs we have finished", "gal.p": "A selection of completed demolition jobs for private customers in Copenhagen and across Zealand.", "cta2.h": "Got something to demolish?", "cta2.p": "Send us photos and tell us what needs to be removed.", "cta.contact": "Contact us", "cta2.area": "Copenhagen · Zealand", "foot.p": "Professional demolition in Copenhagen and Zealand.", "q.kicker": "Free quote", "q.h": "What needs to go?", "q.service": "Job", "q.name": "Name", "q.phone": "Phone", "q.mail": "E-mail", "q.msg": "Short description (address, size, anything we should know)", "q.photos": "Photos of the job (optional)", "q.photosCta": "Choose photos", "q.photosHint": "Up to 5 photos, max 5 MB in total.", "q.hint": "We reply within 24 hours. Your details are never shared with third parties.", "q.send": "Send request", "s1.title": "<span>Roof<\/span> <span>demolition<\/span>", "sc.title": "<span>Ceiling<\/span> <span>demolition<\/span>", "s2.title": "<span>Wall<\/span> <span>demolition<\/span>", "s3.title": "<span>Kitchen<\/span> <span>demolition<\/span>", "s4.title": "<span>Bathroom<\/span> <span>demolition<\/span>", "s5.title": "<span>Floor<\/span> <span>demolition<\/span>", "s6.title": "<span>Complete<\/span> <span>demolition<\/span>"});
 
 var lang='en';
 DICT.en['q.sent']='Thanks! We have received your request.';DICT.en['q.photosHint']='Up to 5 photos, max 5 MB in total.';
