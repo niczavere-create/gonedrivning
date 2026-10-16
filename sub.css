@@ -142,3 +142,9 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 .hero>.stats.marq{margin:0 calc(-1*clamp(16px,4vw,40px));border-color:rgba(255,255,255,.18);background:rgba(10,11,12,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .hero>.stats.marq .st-track>div{border-right-color:rgba(255,255,255,.18)!important}
 .hero>.stats.marq .st-track>div span{color:#E9E4DA}
+/* hero v4 */
+.hero{padding-top:clamp(64px,13vh,140px)!important;padding-bottom:20px!important;margin-bottom:0!important}
+.hero>.stats.marq{background:rgba(10,11,12,.12);-webkit-backdrop-filter:none;backdrop-filter:none;border-color:rgba(255,255,255,.12)}
+.hero>.stats.marq .st-track>div b,.hero>.stats.marq .st-track>div span{text-shadow:0 1px 10px rgba(0,0,0,.7)}
+#anmeldelser2{padding-top:clamp(32px,5vw,56px)}
+@media (max-width:860px){.hero{min-height:calc(100svh - 64px - 92px)!important;padding-bottom:16px!important}}
