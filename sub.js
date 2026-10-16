@@ -84,3 +84,4 @@ m.addEventListener('click',function(e){var b=e.target.closest('.rv-more');if(!b)
 m.addEventListener('touchstart',function(){m.classList.add('paused')},{passive:true});
 m.addEventListener('touchend',function(){setTimeout(function(){if(!m.querySelector('.rev.open'))m.classList.remove('paused')},2500)},{passive:true});
 addEventListener('load',fit);addEventListener('resize',fit);fit()})();
+(function(){var s=document.querySelector('.stats');if(!s)return;var t=document.createElement('div');t.className='st-track';var h=s.innerHTML;t.innerHTML=h+h+h+h;s.innerHTML='';s.appendChild(t);s.classList.add('marq');[].slice.call(t.children,s.children.length?0:0).forEach(function(d,i){if(i>=3)d.setAttribute('aria-hidden','true')})})();
