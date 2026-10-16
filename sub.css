@@ -137,3 +137,8 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 .stats.marq .st-track>div b{font-size:clamp(32px,4vw,46px)}
 @keyframes stMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.stats.marq .st-track{animation:none}.stats.marq{overflow-x:auto}}
+/* hero v3: tekst øverst, tal-ruller nederst i første skærm */
+.hero{display:flex!important;flex-direction:column;justify-content:space-between;gap:28px;padding-top:clamp(28px,6vw,64px)!important}
+.hero>.stats.marq{margin:0 calc(-1*clamp(16px,4vw,40px));border-color:rgba(255,255,255,.18);background:rgba(10,11,12,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hero>.stats.marq .st-track>div{border-right-color:rgba(255,255,255,.18)!important}
+.hero>.stats.marq .st-track>div span{color:#E9E4DA}
