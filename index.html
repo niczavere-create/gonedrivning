@@ -59,7 +59,7 @@ h1,h2,h3{text-wrap:balance}
 .btn-accent:active{transform:scale(.98)}
 .btn-ghost{border-color:var(--line-2);color:var(--text);background:rgba(14,15,16,.35)}
 .btn-ghost:hover{border-color:var(--text)}
-.btn-sm{min-height:40px;padding:0 16px;font-size:12.5px}
+.btn-sm{min-height:40px;padding:0 16px;font-size:12px}
 
 /* ---------- header ---------- */
 .hdr{position:fixed;inset:0 0 auto 0;z-index:40;height:calc(var(--hdr-h) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) clamp(16px,3vw,40px) 0;display:flex;align-items:center;justify-content:space-between;gap:20px;transition:height .35s var(--ease),background-color .35s,border-color .35s;border-bottom:1px solid transparent}
@@ -67,13 +67,13 @@ h1,h2,h3{text-wrap:balance}
 .logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--f-display);font-stretch:125%;font-weight:900;font-size:17px;letter-spacing:.01em}
 .logo-go{background:var(--accent);color:var(--accent-ink);padding:3px 7px 2px;border-radius:4px;line-height:1.1}
 .nav{display:flex;gap:30px}
-.nav a{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .2s}
 .nav a:hover{color:var(--text)}
 .hdr-right{display:flex;align-items:center;gap:14px}
 .hdr-phone{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-decoration:none;display:flex;align-items:center;gap:8px;color:var(--text)}
 .hdr-phone svg{width:15px;height:15px;color:var(--accent)}
 .lang{display:flex;border:1px solid var(--line-2);border-radius:999px;padding:3px}
-.lang button{background:none;border:0;cursor:pointer;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;padding:5px 9px;border-radius:999px;color:var(--muted)}
+.lang button{background:none;border:0;cursor:pointer;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;padding:5px 9px;border-radius:999px;color:var(--muted)}
 .lang button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
 .burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:none;cursor:pointer;position:relative}
 .burger span{position:absolute;left:13px;right:13px;height:2px;background:var(--text);transition:transform .3s var(--ease),top .3s}
@@ -149,7 +149,7 @@ h1,h2,h3{text-wrap:balance}
 .st h2 span{display:block}
 .st .tag{font-size:clamp(18px,1.45vw,21px);font-weight:600;margin:22px 0 10px;color:var(--text)}
 .st p.desc{color:var(--muted);margin:0 0 26px;font-size:16.5px;max-width:40ch}
-.st .waste{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line-2);border-radius:6px;color:var(--muted);font-size:11px}
+.st .waste{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line-2);border-radius:6px;color:var(--muted);font-size:12px}
 .st .waste::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--brick)}
 .st-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .st .big,.st .st-top,.st .tag,.st p.desc,.st .st-bar{display:none}
@@ -173,7 +173,7 @@ h1,h2,h3{text-wrap:balance}
 .rail ol{list-style:none;margin:0;padding:0;position:relative;display:flex;flex-direction:column;gap:18px}
 .rail ol::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--line-2)}
 .rail .fill{position:absolute;left:4px;top:6px;width:1px;background:var(--accent);height:0}
-.rail button{display:flex;align-items:center;gap:14px;background:none;border:0;padding:0;cursor:pointer;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;transition:color .3s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.rail button{display:flex;align-items:center;gap:14px;background:none;border:0;padding:0;cursor:pointer;color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;transition:color .3s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 .rail button::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--line-2);transition:all .3s;position:relative;z-index:1;flex:none}
 .rail button:hover{color:var(--text)}
 .rail li.done button{color:var(--muted)}
@@ -205,7 +205,7 @@ section.block{padding-block:clamp(48px,6vw,92px);border-top:1px solid var(--line
 .stat b{display:block;font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:clamp(24px,2.5vw,40px);line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em;overflow-wrap:anywhere}
 .stat b small{font-size:.5em;color:var(--accent);margin-left:2px}
 .stat span{display:block;color:var(--muted);font-size:14px;margin-top:10px;max-width:22ch}
-.stats-note{color:var(--dim);margin-top:14px;font-size:11px}
+.stats-note{color:var(--dim);margin-top:14px;font-size:12px}
 
 .svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .svc{position:relative;background:var(--bg);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:14px;cursor:pointer;transition:background-color .35s var(--ease);text-align:left;border:0;color:var(--text)}
@@ -216,11 +216,11 @@ section.block{padding-block:clamp(48px,6vw,92px);border-top:1px solid var(--line
 .svc:hover .ic *{animation:draw .9s var(--ease)}
 @keyframes draw{from{stroke-dashoffset:120}to{stroke-dashoffset:0}}
 .svc h3{margin:auto 0 0;font-family:var(--f-display);font-stretch:112%;font-weight:750;font-size:20px;line-height:1.1;text-transform:uppercase;letter-spacing:.005em;overflow-wrap:anywhere;word-break:break-word;-webkit-hyphens:auto;hyphens:auto}
-.svc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.45;overflow-wrap:anywhere}
-.svc .go{position:absolute;right:20px;top:24px;color:var(--dim);font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;transition:color .3s,transform .4s var(--ease)}
+.svc p{margin:0;color:var(--muted);font-size:14px;line-height:1.45;overflow-wrap:anywhere}
+.svc .go{position:absolute;right:20px;top:24px;color:var(--dim);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;transition:color .3s,transform .4s var(--ease)}
 .svc:hover .go{color:var(--accent);transform:translateX(3px)}
 .svc .hazard{position:absolute;left:24px;top:auto;bottom:auto}
-.svc.special .badge{align-self:flex-start;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:rgba(255,194,26,.12);color:var(--accent)}
+.svc.special .badge{align-self:flex-start;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:rgba(255,194,26,.12);color:var(--accent)}
 
 .steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
 .steps-line{position:absolute;left:0;right:0;top:27px;height:2px;background:var(--line)}
@@ -229,14 +229,14 @@ section.block{padding-block:clamp(48px,6vw,92px);border-top:1px solid var(--line
 .step .n{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line-2);font-family:var(--f-mono);font-size:14px;margin-bottom:26px;position:relative;transition:background-color .4s,color .4s,border-color .4s}
 .step.lit .n{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .step h3{font-family:var(--f-display);font-stretch:112%;font-weight:750;font-size:22px;text-transform:uppercase;line-height:1.1;margin:0 0 10px}
-.step p{margin:0;color:var(--muted);font-size:15.5px;max-width:30ch}
+.step p{margin:0;color:var(--muted);font-size:16px;max-width:30ch}
 
 .why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
 .why div{padding:34px 22px 10px 0;min-width:0}
 .why div+div{padding-left:26px;border-left:1px solid var(--line)}
 .why h3{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:clamp(20px,1.8vw,27px);text-transform:uppercase;margin:0 0 12px;letter-spacing:-.01em;overflow-wrap:anywhere;hyphens:auto}
 .why h3::after{content:".";color:var(--accent)}
-.why p{color:var(--muted);margin:0;font-size:15.5px;max-width:28ch}
+.why p{color:var(--muted);margin:0;font-size:16px;max-width:28ch}
 
 .areas{display:flex;flex-wrap:wrap;gap:10px}
 .areas li{list-style:none;padding:12px 18px;border:1px solid var(--line-2);border-radius:999px;font-family:var(--f-display);font-stretch:112%;font-weight:650;font-size:17px;text-transform:uppercase;letter-spacing:.02em}
@@ -280,11 +280,11 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 .q-head h2{font-size:32px}
 .q-close{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:none;cursor:pointer;font-size:20px;line-height:1;flex:none}
 .q-in form{display:grid;gap:16px}
-.q-in label{display:grid;gap:7px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.q-in label{display:grid;gap:7px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .q-in input,.q-in select,.q-in textarea{font:inherit;font-family:var(--f-body);font-size:16px;letter-spacing:0;text-transform:none;color:var(--text);background:var(--bg);border:1px solid var(--line-2);border-radius:10px;padding:13px 14px;min-height:48px;width:100%}
 .q-in textarea{min-height:96px;resize:vertical}
 .q-in input:focus,.q-in select:focus,.q-in textarea:focus{outline:none;border-color:var(--accent)}
-.q-in .hint{color:var(--dim);font-size:13.5px;margin:0}
+.q-in .hint{color:var(--dim);font-size:14px;margin:0}
 .q-in .q-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .q-in .q-actions .btn{flex:1 1 200px}
 
@@ -320,7 +320,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
   .st h2{font-size:clamp(28px,8.4vw,40px)}
   .st h2 span{display:inline}
   .st .tag{font-size:16.5px;margin:10px 0 4px}
-  .st p.desc{font-size:14.5px;margin-bottom:14px;line-height:1.45}
+  .st p.desc{font-size:14px;margin-bottom:14px;line-height:1.45}
   .st .big{display:none}
   .st-bar{margin-top:14px}
   .st .st-actions .call{display:none}
@@ -340,7 +340,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
   .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .svc{min-height:190px;padding:20px 18px}
   .svc h3{font-size:clamp(14px,4.15vw,17px)}
-  .svc p{font-size:13.5px}
+  .svc p{font-size:14px}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
   .stat,.stat:nth-child(4){padding:22px 14px 20px;border-left:1px solid var(--line)}
   .stat:nth-child(odd){border-left:0;padding-left:0}
@@ -389,9 +389,9 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 @media (max-width:560px){.gal{grid-template-columns:repeat(2,1fr)}.gal-i.wide{grid-column:span 2}}
 .gal-i img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s var(--ease);filter:saturate(.92)}
 .gal-i:hover img,.gal-i:focus-visible img{transform:scale(1.045);filter:saturate(1)}
-.gal-i figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 10px;font-size:13.5px;line-height:1.35;
+.gal-i figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 12px 10px;font-size:14px;line-height:1.35;
   background:linear-gradient(to top,rgba(10,11,12,.92),rgba(10,11,12,0));color:var(--text)}
-.gal-i .n{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--accent);margin-bottom:2px}
+.gal-i .n{display:block;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--accent);margin-bottom:2px}
 .lb{position:fixed;inset:0;z-index:120;display:none;background:rgba(8,9,10,.94);backdrop-filter:blur(6px)}
 .lb.on{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
 .lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
@@ -412,18 +412,18 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 .cc:hover{border-color:var(--line-2)}
 .cc.on{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,194,26,.07),rgba(255,194,26,0))}
 .cc h3{margin:0 0 4px;font-size:16px;font-weight:700;overflow-wrap:anywhere}
-.cc p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.4;overflow-wrap:anywhere}
+.cc p{margin:0;color:var(--muted);font-size:14px;line-height:1.4;overflow-wrap:anywhere}
 .cc .tick{position:absolute;top:14px;right:14px;width:20px;height:20px;border:1px solid var(--line-2);border-radius:5px;display:grid;place-items:center;color:var(--accent-ink);font-size:13px;background:transparent}
 .cc.on .tick{background:var(--accent);border-color:var(--accent)}
 .cc-fields{display:none;gap:8px;margin-top:12px}
 .cc.on .cc-fields{display:grid}
-.cc-fields select,.cc-fields input{width:100%;background:var(--bg-3);color:var(--text);border:1px solid var(--line-2);border-radius:8px;padding:9px 10px;font:inherit;font-size:14.5px}
+.cc-fields select,.cc-fields input{width:100%;background:var(--bg-3);color:var(--text);border:1px solid var(--line-2);border-radius:8px;padding:9px 10px;font:inherit;font-size:14px}
 .cc-fields input{font-variant-numeric:tabular-nums}
 .calc-rows{display:grid;gap:10px}
 .crow{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.25fr) minmax(0,.8fr) 44px;gap:10px;align-items:end;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:14px}
 .crow.ok{border-color:rgba(255,194,26,.55)}
 .crow label{display:grid;gap:6px;min-width:0}
-.crow label>span{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+.crow label>span{font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
 .crow select,.crow input{width:100%;min-height:46px;background:var(--bg-3);color:var(--text);border:1px solid var(--line-2);border-radius:8px;padding:10px 12px;font:inherit;font-size:16px}
 .crow select:focus,.crow input:focus{border-color:var(--accent);outline:none}
 .crow select:disabled,.crow input:disabled{opacity:.45}
@@ -431,16 +431,16 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 .crow .fixed{min-height:46px;display:flex;align-items:center;color:var(--muted);font-size:14px}
 .crow .rm{width:44px;height:46px;border-radius:8px;border:1px solid var(--line-2);background:transparent;color:var(--muted);font-size:20px;cursor:pointer}
 .crow .rm:hover{border-color:var(--accent);color:var(--text)}
-.crow .rate{grid-column:1/-1;margin:-2px 0 0;font-size:13.5px;color:var(--muted)}
+.crow .rate{grid-column:1/-1;margin:-2px 0 0;font-size:14px;color:var(--muted)}
 .crow .rate b{color:var(--accent);font-weight:600}
 .crow .rate a{color:var(--accent)}
 .calc-add{justify-self:start;min-height:46px;padding:0 18px;border-radius:999px;border:1px dashed var(--line-2);background:transparent;color:var(--text);font:inherit;font-weight:600;cursor:pointer}
 .calc-add:hover{border-color:var(--accent);color:var(--accent)}
 @media (max-width:640px){.crow{grid-template-columns:minmax(0,1fr) 44px}.crow .f-cat,.crow .f-type{grid-column:1/-1}.crow .f-m2{grid-column:1/2}}
 .calc-sum{position:sticky;top:calc(var(--hdr-h) + 14px);background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:18px}
-.calc-sum .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;color:var(--dim);text-transform:uppercase}
+.calc-sum .lbl{font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;color:var(--dim);text-transform:uppercase}
 .calc-sum .tot{font-family:var(--f-display);font-size:clamp(34px,5vw,46px);font-weight:800;line-height:1.05;color:var(--accent);font-variant-numeric:tabular-nums;margin:2px 0 2px}
-.calc-sum .vat{color:var(--muted);font-size:13.5px}
+.calc-sum .vat{color:var(--muted);font-size:14px}
 .calc-lines{list-style:none;margin:16px 0 0;padding:16px 0 0;border-top:1px dashed var(--line-2);display:grid;gap:9px}
 .calc-lines li{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
 .calc-lines b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -450,7 +450,7 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 
 
 .q-files{display:grid;gap:8px;margin-top:2px}
-.q-files-lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+.q-files-lbl{font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
 #q-photos{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .q-drop{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border:1px dashed var(--line-2);border-radius:var(--r);
   color:var(--muted);cursor:pointer;background:var(--bg-3);transition:border-color .2s,color .2s}
@@ -471,13 +471,13 @@ dialog.quote::backdrop{background:rgba(6,7,8,.72);-webkit-backdrop-filter:blur(6
 .rev figcaption{color:var(--muted);font-size:14px;margin-top:auto}
 @media (max-width:900px){.revs{grid-template-columns:1fr}}
 .xlinks{margin:18px 0 0;display:flex;gap:20px;flex-wrap:wrap}
-.xlinks a{color:var(--accent);text-decoration:none;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.xlinks a{color:var(--accent);text-decoration:none;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .vid{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;cursor:pointer;padding:0;width:100%}
 .vid img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s,transform .6s var(--ease)}
 .vid:hover img{opacity:1;transform:scale(1.03)}
 .vid .play{position:absolute;left:50%;top:50%;width:64px;height:64px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;transform:translate(-50%,-50%);box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.vid .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.8));text-align:left;font-size:14.5px;color:var(--text)}
+.vid .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.8));text-align:left;font-size:14px;color:var(--text)}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
 @media (max-width:860px){.two{grid-template-columns:1fr}}
@@ -552,7 +552,7 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 .hero2{padding:calc(var(--hdr-h) + 36px) 0 56px;background:radial-gradient(1200px 500px at 85% 0,rgba(255,194,26,.08),transparent 60%)}
 .hero2-in{display:grid;grid-template-columns:minmax(0,1fr);max-width:860px}
 .hero2-txt{display:grid;gap:20px;align-content:start}
-.hero2-badge{justify-self:start;display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--bg-2);color:var(--muted);text-decoration:none;font-size:14.5px}
+.hero2-badge{justify-self:start;display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--bg-2);color:var(--muted);text-decoration:none;font-size:14px}
 .hero2-badge .h2stars{color:var(--accent);display:inline-flex;gap:1px}.hero2-badge b{color:var(--text)}
 .hero2-txt{min-width:0}
 .hero2 h1{margin:0;font-stretch:100%;font-size:clamp(26px,7.4vw,72px);line-height:1.02;white-space:normal;max-width:100%;overflow-wrap:break-word}
@@ -587,9 +587,9 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 @media (max-width:860px){.hero2{padding-top:calc(var(--hdr-h) + 2px)}.hero2-badge{margin-bottom:-4px}.hero2 h1{margin-top:auto}.hero2-cta{margin-top:auto}}
 .areas-g{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:500;margin:26px 0 12px}
 .areas-sm{gap:8px}.areas-sm li{padding:8px 14px;font-size:14px}
-@media (max-width:640px){.areas-sm li{font-size:12.5px;padding:7px 11px}}
+@media (max-width:640px){.areas-sm li{font-size:12px;padding:7px 11px}}
 @media (max-width:900px){.revs{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:clamp(16px,4vw,40px);gap:12px;margin:0 calc(-1*clamp(16px,4vw,40px));padding:0 clamp(16px,4vw,40px) 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.revs::-webkit-scrollbar{display:none}.revs .rev{flex:0 0 84%;scroll-snap-align:start}}
-.revs-hint{display:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin:10px 0 0}
+.revs-hint{display:none;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin:10px 0 0}
 @media (max-width:900px){.revs-hint{display:block}}
 .stats-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}.stats-top .kicker{margin:0}
 .stats-badge{display:inline-flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;font-size:14px}.stats-badge .h2stars{color:var(--accent);display:inline-flex;gap:1px}
@@ -600,7 +600,7 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 .gcard-mid{display:flex;flex-direction:column;gap:6px}
 .gcard-stars{color:var(--accent);display:inline-flex;gap:2px}
 .gcard-lbl{color:var(--muted);font-size:16px}
-.gcard-go{margin-left:auto;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.gcard-go{margin-left:auto;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
 .gcard:hover .gcard-go{text-decoration:underline}
 #results .gcard+.stats{border-top:1px solid var(--line)}
 @media (max-width:640px){.gcard{flex-wrap:wrap;gap:10px 14px;padding:20px 0}.gcard-logo svg{width:38px;height:38px}.gcard-stars svg{width:20px;height:20px}.gcard-go{margin-left:0;width:100%}}
@@ -641,7 +641,24 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 .rvm::-webkit-scrollbar{display:none}
 .rvm-track{animation:none!important;padding:4px 0 6px}
 .rvm .rev{scroll-snap-align:start}
-.rvm-hint{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#A39E95;margin:10px 0 0}
+.rvm-hint{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#A39E95;margin:10px 0 0}
+
+/* audit v1 */
+.svc .go{color:var(--accent)}
+.more-btn{display:none;width:100%;margin-top:14px;min-height:48px;border-radius:12px;border:1px solid var(--line-2);background:transparent;color:var(--accent);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+@media (max-width:640px){
+  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .svc{padding:18px 14px!important;gap:8px!important;min-height:0!important}
+  .svc h3{font-size:13px!important;line-height:1.25;letter-spacing:0!important;overflow-wrap:normal!important;word-break:normal!important;-webkit-hyphens:auto;hyphens:auto}
+  .svc p{display:none}
+  .svc .ic{width:26px;height:26px}
+  .svc .go{right:12px;top:14px;font-size:16px!important}
+  .svc-grid:not(.open) .svc:nth-child(n+7){display:none}
+  .more-btn{display:block}
+  .hero2-ok li{background:rgba(0,0,0,.55);padding:6px 10px;border-radius:999px;font-size:14px!important;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  #areas:not(.open) .areas-sm li:nth-child(n+13){display:none}
+  #areas:not(.open) .areas-g:nth-of-type(2),#areas:not(.open) .areas-sm:nth-of-type(2){display:none}
+}
 </style>
 </head>
 <body>
@@ -737,7 +754,7 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
         <div><span class="kicker mono" data-i18n="svc.kicker">Ydelser</span><h2 class="display" id="services-h" data-i18n="svc.h">Det river vi ned</h2></div>
         <p data-i18n="svc.p">Fra en enkelt væg til et helt hus. Vi står for nedrivningen, sorterer affaldet og efterlader pladsen ryddet.</p>
       </div>
-      <div class="svc-grid" id="svcGrid"><a href="kokken" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="18" height="10" rx="1"></rect><path d="M3 14h18M9 10v10M5 6h5M14 6h5"></path></svg><span class="go" aria-hidden="true">→</span><h3>Køkkennedrivning</h3><p>Skabe, bordplader, fliser og hvidevarer ud.</p></a><a href="nedrivning-af-vaegge" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 9.7h18M3 14.3h18M9 5v4.7M15 9.7v4.6M9 14.3V19"></path></svg><span class="go" aria-hidden="true">→</span><h3>Vægnedrivning</h3><p>Ikke-bærende vægge fjernes – affald inklusive.</p></a><a href="nedrivning-af-gulve" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16l9-5 9 5-9 5zM3 11.5l9-5 9 5"></path></svg><span class="go" aria-hidden="true">→</span><h3>Gulvnedrivning</h3><p>Beton, fliser og trægulve brydes op.</p></a><a href="nedrivning-af-lofter" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M5 5v4h14V5M12 12v8M9 17l3 3 3-3"></path></svg><span class="go" aria-hidden="true">→</span><h3>Loftnedrivning</h3><p>Gamle lofter, plader og lægter tages ned.</p></a><button type="button" data-quote="roof" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l10-8 10 8M5 11v9h14v-9M9 20v-5h6v5"></path></svg><span class="go" aria-hidden="true">→</span><h3>Tagnedrivning</h3><p>Tagdækning, lægter og konstruktion fjernes sikkert.</p></button><a href="nedrivning-af-garage" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-5 9 5v11H3zM7 20v-8h10v8M7 15h10"></path></svg><span class="go" aria-hidden="true">→</span><h3>Garagenedrivning</h3><p>Garager i mursten, træ eller elementer ryddes.</p></a><a href="nedrivning-skur" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l8-4 8 4v11H4zM9.5 20v-6h5v6"></path></svg><span class="go" aria-hidden="true">→</span><h3>Nedrivning af skur</h3><p>Skure, havehuse og udhuse.</p></a><a href="nedrivning-af-hus" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5M16 4v3"></path></svg><span class="go" aria-hidden="true">→</span><h3>Husnedrivning</h3><p>Huse og sommerhuse – helt ned til en ryddet grund.</p></a><button type="button" data-quote="concrete" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l4-10 4 4 3-9 7 15zM11 14l1 6"></path></svg><span class="go" aria-hidden="true">→</span><h3>Betonnedbrydning</h3><p>Plader, fundamenter, trapper og vægge brydes ned.</p></button><button type="button" data-quote="asbestos" class="svc special"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2zM12 10v5M12 18v.5"></path></svg><span class="badge">Farligt materiale</span><span class="go" aria-hidden="true">→</span><h3>Asbestsanering</h3><p>Asbestholdige materialer fjernes og bortskaffes korrekt.</p></button><button type="button" data-quote="pcb" class="svc special"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16H7zM7 8h10M7 16h10M12 10.5v3"></path></svg><span class="badge">Farligt materiale</span><span class="go" aria-hidden="true">→</span><h3>PCB-sanering</h3><p>Fuger, vinduer og maling med PCB håndteres separat.</p></button><button type="button" data-quote="lead" class="svc special"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h13v5H4zM17 6.5h3v6h-8v3M11 15.5h2V21h-2z"></path></svg><span class="badge">Farligt materiale</span><span class="go" aria-hidden="true">→</span><h3>Fjernelse af blymaling</h3><p>Blymalede overflader fjernes og bortskaffes sikkert.</p></button></div>
+      <div class="svc-grid" id="svcGrid"><a href="kokken" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="18" height="10" rx="1"></rect><path d="M3 14h18M9 10v10M5 6h5M14 6h5"></path></svg><span class="go" aria-hidden="true">→</span><h3>Køkkennedrivning</h3><p>Skabe, bordplader, fliser og hvidevarer ud.</p></a><a href="nedrivning-af-vaegge" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 9.7h18M3 14.3h18M9 5v4.7M15 9.7v4.6M9 14.3V19"></path></svg><span class="go" aria-hidden="true">→</span><h3>Vægnedrivning</h3><p>Ikke-bærende vægge fjernes – affald inklusive.</p></a><a href="nedrivning-af-gulve" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16l9-5 9 5-9 5zM3 11.5l9-5 9 5"></path></svg><span class="go" aria-hidden="true">→</span><h3>Gulvnedrivning</h3><p>Beton, fliser og trægulve brydes op.</p></a><a href="nedrivning-af-lofter" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M5 5v4h14V5M12 12v8M9 17l3 3 3-3"></path></svg><span class="go" aria-hidden="true">→</span><h3>Loftnedrivning</h3><p>Gamle lofter, plader og lægter tages ned.</p></a><button type="button" data-quote="roof" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l10-8 10 8M5 11v9h14v-9M9 20v-5h6v5"></path></svg><span class="go" aria-hidden="true">→</span><h3>Tagnedrivning</h3><p>Tagdækning, lægter og konstruktion fjernes sikkert.</p></button><a href="nedrivning-af-garage" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-5 9 5v11H3zM7 20v-8h10v8M7 15h10"></path></svg><span class="go" aria-hidden="true">→</span><h3>Garagenedrivning</h3><p>Garager i mursten, træ eller elementer ryddes.</p></a><a href="nedrivning-skur" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l8-4 8 4v11H4zM9.5 20v-6h5v6"></path></svg><span class="go" aria-hidden="true">→</span><h3>Nedrivning af skur</h3><p>Skure, havehuse og udhuse.</p></a><a href="nedrivning-af-hus" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5M16 4v3"></path></svg><span class="go" aria-hidden="true">→</span><h3>Husnedrivning</h3><p>Huse og sommerhuse – helt ned til en ryddet grund.</p></a><button type="button" data-quote="concrete" class="svc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l4-10 4 4 3-9 7 15zM11 14l1 6"></path></svg><span class="go" aria-hidden="true">→</span><h3>Betonnedbrydning</h3><p>Plader, fundamenter, trapper og vægge brydes ned.</p></button><button type="button" data-quote="asbestos" class="svc special"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2zM12 10v5M12 18v.5"></path></svg><span class="badge">Farligt materiale</span><span class="go" aria-hidden="true">→</span><h3>Asbestsanering</h3><p>Asbestholdige materialer fjernes og bortskaffes korrekt.</p></button><button type="button" data-quote="pcb" class="svc special"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16H7zM7 8h10M7 16h10M12 10.5v3"></path></svg><span class="badge">Farligt materiale</span><span class="go" aria-hidden="true">→</span><h3>PCB-sanering</h3><p>Fuger, vinduer og maling med PCB håndteres separat.</p></button><button type="button" data-quote="lead" class="svc special"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h13v5H4zM17 6.5h3v6h-8v3M11 15.5h2V21h-2z"></path></svg><span class="badge">Farligt materiale</span><span class="go" aria-hidden="true">→</span><h3>Fjernelse af blymaling</h3><p>Blymalede overflader fjernes og bortskaffes sikkert.</p></button></div><button type="button" class="more-btn" id="svcMore">Vis alle 12 ydelser ↓</button>
     </div>
   </section>
 
@@ -836,6 +853,7 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
       <ul class="areas areas-sm"><li>København</li><li>Frederiksberg</li><li>Gentofte</li><li>Gladsaxe</li><li>Lyngby-Taarbæk</li><li>Rudersdal</li><li>Furesø</li><li>Ballerup</li><li>Herlev</li><li>Rødovre</li><li>Hvidovre</li><li>Brøndby</li><li>Glostrup</li><li>Albertslund</li><li>Høje-Taastrup</li><li>Ishøj</li><li>Vallensbæk</li><li>Tårnby</li><li>Dragør</li><li>Egedal</li><li>Allerød</li><li>Hørsholm</li><li>Fredensborg</li><li>Helsingør</li><li>Hillerød</li><li>Gribskov</li><li>Halsnæs</li><li>Frederikssund</li></ul>
       <h3 class="areas-g">Midt-, Vest- &amp; Sydsjælland</h3>
       <ul class="areas areas-sm"><li>Roskilde</li><li>Greve</li><li>Solrød</li><li>Køge</li><li>Lejre</li><li>Holbæk</li><li>Odsherred</li><li>Kalundborg</li><li>Sorø</li><li>Ringsted</li><li>Slagelse</li><li>Næstved</li><li>Faxe</li><li>Stevns</li><li>Vordingborg</li></ul>
+      <button type="button" class="more-btn" id="areaMore">Vis alle 43 kommuner ↓</button>
       <p class="areas-copy" data-i18n="area.p2">Vi river ned i alle 43 kommuner på Sjælland – fra et enkelt køkken i en lejlighed i København til et helt hus med garage og skur i Næstved, Holbæk eller Kalundborg. Samme faste priser i hele regionen, og affaldet køres altid til godkendte modtageanlæg i nærheden.</p>
     </div>
   </section>
@@ -1222,5 +1240,6 @@ m.addEventListener('click',function(e){var b=e.target.closest('.rv-more');if(!b)
 m.addEventListener('touchstart',function(){m.classList.add('paused')},{passive:true});
 m.addEventListener('touchend',function(){setTimeout(function(){if(!m.querySelector('.rev.open'))m.classList.remove('paused')},2500)},{passive:true});
 addEventListener('load',fit);addEventListener('resize',fit);fit()})();</script>
+<script>(function(){function t(b,el){b&&b.addEventListener('click',function(){el.classList.add('open');b.style.display='none'})}t(document.getElementById('svcMore'),document.getElementById('svcGrid'));t(document.getElementById('areaMore'),document.getElementById('areas'))})();</script>
 </body>
 </html>
