@@ -148,3 +148,9 @@ label.q-drop,.q-drop{display:flex!important;flex-direction:column;align-items:ce
 .hero>.stats.marq .st-track>div b,.hero>.stats.marq .st-track>div span{text-shadow:0 1px 10px rgba(0,0,0,.7)}
 #anmeldelser2{padding-top:clamp(32px,5vw,56px)}
 @media (max-width:860px){.hero{min-height:calc(100svh - 64px - 92px)!important;padding-bottom:16px!important}}
+/* før & efter: hvid baggrund */
+#foer-efter{background:#fff!important;color:#141210;--line:#1412101f;--line-2:#14121033;--muted:#5C574F}
+#foer-efter .kicker{color:#9A6B00}
+#foer-efter .display,#foer-efter h2,#foer-efter h3{color:#141210}
+#foer-efter .s-head p,#foer-efter p{color:#4A453E}
+#foer-efter .ba .tag{color:#F3F0E9}#foer-efter .ba .tag.r{color:var(--accent)}#foer-efter .ba-note{color:#5C574F}
